@@ -1,0 +1,37 @@
+ion-item{
+    border-radius: 20px;
+    --background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.custom-btn{
+    --background:orange;
+}
+
+.scroll-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent line wrapping */
+    display: flex;
+    padding: 10px;
+}
+
+.sected-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap; /* Ensure items remain in a single line */
+}
+
+.options{
+    background:orange;
+    width:fit-content;
+    padding:10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height:30px;
+    border: 1px solid orange;
+    border-radius: 15px;
+    display: flex;
+    gap:2px;
+}

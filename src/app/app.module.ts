@@ -17,13 +17,15 @@ import { CartComponent } from './pages/cart/cart/cart.component';
 import { OrderReviewComponent } from './pages/order-review/order-review/order-review.component';
 import { PaymentSuccessComponent } from './reuseable-components/payment-successs/payment-success/payment-success.component';
 import { TrackOrderComponent } from './pages/track-order/track-order.component';
+import { BuildPizzaComponent } from './pages/build-pizza/build-pizza/build-pizza.component';
+import { SuccessAddToCardComponent } from './reuseable-components/success-add-to-card/success-add-to-card.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SignUpComponent,
     LoginComponent, ForgotPasswordComponent, OtpComponent,TabsComponent, MyOrdersComponent,
     PaymentMethodsComponent,ProfileComponent, MenuComponent, CartComponent, OrderReviewComponent, 
-    PaymentSuccessComponent, TrackOrderComponent],
+    PaymentSuccessComponent, TrackOrderComponent, BuildPizzaComponent, SuccessAddToCardComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

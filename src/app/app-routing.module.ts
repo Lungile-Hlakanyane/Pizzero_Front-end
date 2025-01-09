@@ -12,6 +12,7 @@ import { MenuComponent } from './pages/menu/menu/menu.component';
 import { CartComponent } from './pages/cart/cart/cart.component';
 import { OrderReviewComponent } from './pages/order-review/order-review/order-review.component';
 import { TrackOrderComponent } from './pages/track-order/track-order.component';
+import { BuildPizzaComponent } from './pages/build-pizza/build-pizza/build-pizza.component';
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
@@ -31,10 +32,10 @@ const routes: Routes = [
       { path: 'profile',component:ProfileComponent},
       { path: 'menu', component:MenuComponent},
       { path: 'cart', component:CartComponent},
+      { path: 'build-pizza', component:BuildPizzaComponent}
     ],
   },
 ];
-
 
 @NgModule({
   imports: [
