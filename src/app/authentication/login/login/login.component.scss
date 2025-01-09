@@ -1,0 +1,40 @@
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom:15px;
+}
+
+.action-btn,
+.custom-btn{
+  --background:orange;
+}
+
+.google-btn{
+    border: 1px solid grey;
+    width: 100%;
+    height:45px;
+    display: flex;
+    gap:10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.terms{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}

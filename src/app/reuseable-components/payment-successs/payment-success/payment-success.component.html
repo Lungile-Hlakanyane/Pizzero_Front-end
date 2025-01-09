@@ -1,0 +1,32 @@
+<ion-content class="ion-padding" id="border-success-card">
+  
+  <div class="border-success-card">
+
+    <div class="header">
+      <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+        <h1 class="title" style="color:orange; font-weight: bold;">Payment Successs<br></h1>
+        <ion-buttons slot="end" (click)="closeModal()">
+          <ion-icon name="close">Close</ion-icon>
+        </ion-buttons>
+      </div>
+    </div>
+  
+    <div class="center" style="justify-content: center; align-items: center; text-align: center;">
+      <img src="../../../../assets/success-icon.png" style="width: 100px; height:100px;">
+      <P style="color:#000; font-size:30px; font-weight:bold">Payment successful</P>
+      <P style="color:grey; font-size:16x; font-weight:100">Thank you for shopping with us</P>
+      <P style="color:grey; font-size:16x; font-weight:100">You have successfully paid R120.00</P>
+    </div>
+  
+    <div class="action-btn-container" style="display: flex; gap:10px;">
+      <ion-button expand="block" class="custom-btn" (click)="goHome()">
+        Go Home
+      </ion-button>
+      <ion-button expand="block" class="custom-btn" (click)="trackOrder()">
+        Track Order
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

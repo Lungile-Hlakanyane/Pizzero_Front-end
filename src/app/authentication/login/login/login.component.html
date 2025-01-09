@@ -1,0 +1,54 @@
+<ion-content class="ion-padding">
+  <div class="center">
+    <h1 class="title" style="font-weight: bold;">Welcome Lungile</h1>
+  </div>
+  <div class="intro" style="text-align: center; align-items: center; justify-content:center;">
+    <p class="text-intro" style="color:grey">
+      Sign In to Pizzaro
+    <p>
+  </div>
+ 
+ <div class="input-form">
+  <form>
+    <ion-item>
+      <ion-input label="EMAIL" labelPlacement="floating" placeholder="EMAIL"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="PASSWORD" labelPlacement="floating" placeholder="PASSWORD"></ion-input>
+    </ion-item>
+    <P style="color:orange; font-size:15px;" (click)="forgotPassword()">Forgot password?<P>
+
+   <div class="action-btn">
+    <ion-button expand="block" class="custom-btn" (click)="login()">
+      Log In
+    </ion-button>
+    <br>
+    
+   </div>
+
+   <div class="or" style="text-align: center; align-items: center; justify-content: center;">
+    <p style="color:grey;">OR</p>
+   </div>
+
+   <div class="google-btn">
+    <img src="../../../../assets/icon/google_img_icon.png">
+    <p style="color:grey; font-size: 18px;position: relative;bottom:7px;">Continue With Google</p>
+   </div>
+
+   <div class="intro" style="text-align: center; align-items: center; justify-content:center;position: relative; top:2px;">
+    <p class="text-intro" style="color:grey" (click)="justRegister()">
+     Don't have an account? <ion-nav-link style="color:orange; font-size:12px;"> Sign Up</ion-nav-link>
+    <p>
+  </div>
+   
+  </form>
+
+
+  <div class="terms" style="position: relative;top:220px;">
+    <p style="color:grey; font-size: 11px;">This app is protected by reCAPTCHA and Google Privacy Policy and Terms of Service apply.</p>
+  </div>
+
+ </div>
+  
+</ion-content>

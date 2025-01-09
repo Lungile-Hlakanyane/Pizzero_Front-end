@@ -1,0 +1,124 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  .align-horizontal{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ion-item{
+    border-radius: 20px;
+    --background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+  
+  .pizza-container{
+    position: relative;
+    top:15px;
+    background-color: rgb(255, 237, 201);
+    height:auto;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .image-container
+  img{
+    border-radius: 50%;
+  }
+  
+  .custom-btn{
+    --background: orange;
+  
+  }
+  
+  .main-container{
+    position: relative;
+    bottom:15px;
+  }
+  
+  
+  .popular-card{
+    position: relative;
+    top:15px;
+    background-color: rgb(255, 237, 201);
+    height:auto;
+    width: 350px;
+    border-radius: 10px;
+  }
+  
+  .horizontal-content {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: lightgray transparent; /* For Firefox */
+  }
+  
+  .horizontal-content::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .horizontal-content::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 4px;
+  }
+  
+  .horizontal-content::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  
+  .created-btn{
+    --background: orange;
+    height:15px;
+    width:100%;
+  }
+  
+  ion-content {
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .header {
+    position: fixed; 
+    top: 0; left: 0; right: 0; z-index: 100; background-color: #fff;
+    padding: 10px; height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .align-horizontal
+  .back-icon{
+    position: relative;
+    top:5px;
+  }
+
+  .pizza-cart{
+    width: 100%;
+    height:auto;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 237, 201);
+  }

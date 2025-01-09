@@ -1,0 +1,23 @@
+ion-item{
+    border-radius: 20px;
+    --background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+ 
+
+.pizza-card{
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between image and pizza info */
+  margin-bottom: 15px; /* Space between pizza cards */
+  padding: 10px; /* Add padding inside the card */
+  border: 1px solid #e0e0e0; /* Optional: Add a border for separation */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  background-color: #fff; /* Optional: Set a background color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-btn{
+    --background: orange;
+}

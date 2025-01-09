@@ -1,0 +1,21 @@
+.map-container{
+    border: 1px solid grey;
+    border-radius: 20px;
+    height: auto;
+    width: auto;
+}
+
+.arrive-time{
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.custom-btn{
+    --background: orange;
+}

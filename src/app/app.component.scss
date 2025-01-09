@@ -1,0 +1,52 @@
+ion-menu {
+    --min-width: 100%;
+    --max-height: 100vh;
+    --overflow: hidden;
+}
+
+.custom-menu {
+    --ion-background-color: orange;
+    color: white;
+}
+
+ion-footer {
+    border-top: none !important;
+    color: #000000;
+}
+
+ion-item {
+    color: #FFFFFF;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+}
+
+ion-icon {
+    color: #fff;
+}
+
+.close-container {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+ion-icon {
+    height: 24px;
+    width: 24px;
+    color: #FFFFFF;
+    border: 2px;
+}
+
+.header-text {
+    margin-left: 10px;
+    /* Adjust the margin as needed */
+    color: #FFFFFF;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43px;
+    letter-spacing: 0em;
+}

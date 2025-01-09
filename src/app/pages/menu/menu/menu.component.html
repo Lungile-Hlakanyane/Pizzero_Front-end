@@ -1,0 +1,193 @@
+<ion-content class="ion-padding">
+
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color:orange; font-weight: bold;">Menu<br></h1>
+      <ion-buttons slot="end">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-buttons>
+    </div>
+  </div>
+
+  <div class="tab-filters">
+
+    <div class="tabs-container">
+      <div class="tabs">
+        <button
+          class="tab"
+          [class.active]="isActiveSection('all')"
+          (click)="showSection('all')"
+        >
+          All
+        </button>
+        <button
+          class="tab"
+          [class.active]="isActiveSection('pesto')"
+          (click)="showSection('pesto')"
+        >
+          Pesto Pizza
+        </button>
+        <button
+          class="tab"
+          [class.active]="isActiveSection('veggie')"
+          (click)="showSection('veggie')"
+        >
+          Veggie Pizza
+        </button>
+        <button
+          class="tab"
+          [class.active]="isActiveSection('pepperoni')"
+          (click)="showSection('pepperoni')"
+        >
+          Pepperoni Pizza
+        </button>
+        <button
+          class="tab"
+          [class.active]="isActiveSection('bbq')"
+          (click)="showSection('bbq')"
+        >
+          BBQ Pizza
+        </button>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <ion-item lines="none">
+        <ion-icon name="search-outline" slot="start"></ion-icon>
+        <ion-input type="text"placeholder="Search Pizza"></ion-input>
+      </ion-item>
+    </div>
+    
+    <div class="sections">
+      <div *ngIf="isActiveSection('all')" class="section">
+
+        <div class="heading" style="display: flex; justify-content: space-between;">
+          <p style="color:grey;font-weight:bold; font-size:18px;">6 items</p>
+          <p style="color:grey;font-size: 15px; font-weight:100; position: relative; top:10px">Filter By</p>
+        </div>
+        <div class="grid-table">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="text-align: start;">
+                <div class="pizza-card">
+                  <div class="img-container">
+                    <img src="../../../../assets/pizza_01.JPG" style="height:50px; width:50px;">
+                  </div>
+                  <div class="pizza-infor">
+                    <p style="color:#000; font-size: 12px; font-weight:bold">Pesto Pizza</p>
+                    <p style="color:grey; font-size: 10px; font-weight:100">Small, 400g</p>
+                    <p style="color:orange; font-size: 12px; font-weight:bold">R120.00</p>
+                  </div>
+                  <div class="bottom" style="display:flex; justify-content: space-between;">
+                    <p></p>
+                    <p style="color:orange; font-weight:bold; font-size:25px;" (click)="addToCart()">+</p>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: center;">
+                <div class="pizza-card">
+                  <div class="img-container">
+                    <img src="../../../../assets/pizza_01.JPG" style="height:50px; width:50px;">
+                  </div>
+                  <div class="pizza-infor">
+                    <p style="color:#000; font-size: 12px; font-weight:bold">Pesto Pizza</p>
+                    <p style="color:grey; font-size: 10px; font-weight:100">Small, 400g</p>
+                    <p style="color:orange; font-size: 12px; font-weight:bold">R120.00</p>
+                  </div>
+                  <div class="bottom" style="display:flex; justify-content: space-between;">
+                    <p></p>
+                    <p style="color:orange; font-weight:bold; font-size:25px;">+</p>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: end;">
+                <div class="pizza-card">
+                  <div class="img-container">
+                    <img src="../../../../assets/pizza_01.JPG" style="height:50px; width:50px;">
+                  </div>
+                  <div class="pizza-infor">
+                    <p style="color:#000; font-size: 12px; font-weight:bold">Pesto Pizza</p>
+                    <p style="color:grey; font-size: 10px; font-weight:100">Small, 400g</p>
+                    <p style="color:orange; font-size: 12px; font-weight:bold">R120.00</p>
+                  </div>
+                  <div class="bottom" style="display:flex; justify-content: space-between;">
+                    <p></p>
+                    <p style="color:orange; font-weight:bold; font-size:25px;">+</p>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col style="text-align: start;">
+                <div class="pizza-card">
+                  <div class="img-container">
+                    <img src="../../../../assets/pizza_01.JPG" style="height:50px; width:50px;">
+                  </div>
+                  <div class="pizza-infor">
+                    <p style="color:#000; font-size: 12px; font-weight:bold">Pesto Pizza</p>
+                    <p style="color:grey; font-size: 10px; font-weight:100">Small, 400g</p>
+                    <p style="color:orange; font-size: 12px; font-weight:bold">R120.00</p>
+                  </div>
+                  <div class="bottom" style="display:flex; justify-content: space-between;">
+                    <p></p>
+                    <p style="color:orange; font-weight:bold; font-size:25px;">+</p>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: center;">
+                <div class="pizza-card">
+                  <div class="img-container">
+                    <img src="../../../../assets/pizza_01.JPG" style="height:50px; width:50px;">
+                  </div>
+                  <div class="pizza-infor">
+                    <p style="color:#000; font-size: 12px; font-weight:bold">Pesto Pizza</p>
+                    <p style="color:grey; font-size: 10px; font-weight:100">Small, 400g</p>
+                    <p style="color:orange; font-size: 12px; font-weight:bold">R120.00</p>
+                  </div>
+                  <div class="bottom" style="display:flex; justify-content: space-between;">
+                    <p></p>
+                    <p style="color:orange; font-weight:bold; font-size:25px;">+</p>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: end;">
+                <div class="pizza-card">
+                  <div class="img-container">
+                    <img src="../../../../assets/pizza_01.JPG" style="height:50px; width:50px;">
+                  </div>
+                  <div class="pizza-infor">
+                    <p style="color:#000; font-size: 12px; font-weight:bold">Pesto Pizza</p>
+                    <p style="color:grey; font-size: 10px; font-weight:100">Small, 400g</p>
+                    <p style="color:orange; font-size: 12px; font-weight:bold">R120.00</p>
+                  </div>
+                  <div class="bottom" style="display:flex; justify-content: space-between;">
+                    <p></p>
+                    <p style="color:orange; font-weight:bold; font-size:25px;">+</p>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+      <div *ngIf="isActiveSection('pesto')" class="section">
+        <h3>Content loading...</h3>
+      </div>
+      <div *ngIf="isActiveSection('veggie')" class="section">
+        <h3>Content loading...</h3>
+      </div>
+      <div *ngIf="isActiveSection('pepperoni')" class="section">
+        <h3>Content loading...</h3>
+      </div>
+      <div *ngIf="isActiveSection('bbq')" class="section">
+        <h3>Content loading...</h3>
+      </div>
+    </div>
+    
+    
+  
+  </div>
+
+
+
+</ion-content>

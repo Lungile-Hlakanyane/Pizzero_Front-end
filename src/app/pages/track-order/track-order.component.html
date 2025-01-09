@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color:orange; font-weight: bold;">
+        <ion-icon name="arrow-back-sharp" style="position: relative; top:5px;" (click)="goBack()"></ion-icon>
+        Track Order<br></h1>
+      <ion-buttons slot="end">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-buttons>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <img src="../../../assets/map_001.png" style="width:100%; border-radius: 20px;">
+    <div class="arrive-time">
+      <p style="color:#fff;">Arriving at: 10:15AM</p>
+    </div>
+  </div>
+
+  <div class="order-info">
+    <p style="color:#000; font-weight: bold; font-size: 22px;">Track Order</p>
+  </div>
+
+  <div class="deliver-infor" style="display: flex; gap:10px">
+    <div class="avatar">
+      <img src="../../../assets/avatar.png" style="width:100px; height:100px;">
+    </div>
+    <div class="delivery-infor">
+      <p style="color:#000;">John Mokaya</p>
+      <p style="color:grey;font-size: 13px; font-weight:200; position: relative; bottom:15px;">15 Min away(1.5km), via the Redhil Rd</p>
+      <div style="display: flex; gap:10px;">
+        <ion-button expand="block" class="custom-btn"><ion-icon name="call-outline"></ion-icon>Call</ion-button>
+        <ion-button expand="block" class="custom-btn"><ion-icon name="chatbubble-ellipses-outline"></ion-icon>Chat</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="location-container" style="display: flex; gap:10px;">
+    <div class="icon">
+      <p style="font-size: 35px; color:orange"><ion-icon name="location-sharp"></ion-icon></p>
+    </div>
+    <div class="location-info" style="position: relative; top:15px;">
+      <p style="color:#000; font-size: 18px; font-weight: bold; line-height: 1px;">Deliver to:</p>
+      <p style="color:grey; font-size: 12px; font-weight: 100;">27751 Namibia Rockland Bloemfontein Free State 9323</p>
+    </div>
+  </div>
+
+</ion-content>
