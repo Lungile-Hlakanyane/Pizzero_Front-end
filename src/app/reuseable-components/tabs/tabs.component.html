@@ -1,21 +1,38 @@
 <ion-tabs (ionTabsDidChange)="onTabChange($event.tab)">
+
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
+
+    <ion-tab-button tab="home" *ngIf="role === 'customer'">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="menu">
+    <ion-tab-button tab="admin-home" *ngIf="role === 'admin'">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="menu" *ngIf="role === 'customer'">
       <ion-icon name="grid-outline"></ion-icon>
       <ion-label>Menu</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="cart">
+    <ion-tab-button tab="manage-menu" *ngIf="role === 'admin'">
+      <ion-icon name="grid-outline"></ion-icon>
+      <ion-label>Manage Menu</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="manage-orders" *ngIf="role === 'admin'">
+      <ion-icon name="document-text"></ion-icon>
+      <ion-label>Orders</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="cart" *ngIf="role === 'customer'">
       <ion-icon name="cart-outline"></ion-icon>
       <ion-label>Cart</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="profile">
+    <ion-tab-button tab="profile" *ngIf="role === 'customer' || role==='admin'">
       <ion-icon name="person-circle-outline"></ion-icon>
       <ion-label>Profile</ion-label>
     </ion-tab-button>

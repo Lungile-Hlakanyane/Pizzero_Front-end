@@ -13,6 +13,11 @@ import { CartComponent } from './pages/cart/cart/cart.component';
 import { OrderReviewComponent } from './pages/order-review/order-review/order-review.component';
 import { TrackOrderComponent } from './pages/track-order/track-order.component';
 import { BuildPizzaComponent } from './pages/build-pizza/build-pizza/build-pizza.component';
+import { ViewOrderDetailsComponent } from './pages/view-order-details/view-order-details/view-order-details.component';
+import { NotificationsComponent } from './pages/notifications/notifications/notifications.component';
+import { AdminHomeComponent } from './pages/admin-home/admin-home/admin-home.component';
+import { ManageOrdersComponent } from './pages/manage-orders/manage-orders/manage-orders.component';
+import { ManageMenuComponent } from './pages/manage-menu/manage-menu/manage-menu.component';
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
@@ -21,18 +26,23 @@ const routes: Routes = [
   { path: 'otp', component: OtpComponent },
   { path: 'order-review', component:OrderReviewComponent},
   { path: 'track-order', component:TrackOrderComponent},
+  { path: 'view-order-details',component:ViewOrderDetailsComponent},
+  { path: 'notifications', component:NotificationsComponent},
   {
     path: '',
     component: TabsComponent,
     children: [
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+      { path: 'admin-home',component:AdminHomeComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'my-orders',component:MyOrdersComponent},
       { path: 'payment-methods',component:PaymentMethodsComponent},
       { path: 'profile',component:ProfileComponent},
       { path: 'menu', component:MenuComponent},
       { path: 'cart', component:CartComponent},
-      { path: 'build-pizza', component:BuildPizzaComponent}
+      { path: 'build-pizza', component:BuildPizzaComponent},
+      { path: 'manage-orders', component:ManageOrdersComponent},
+      { path: 'manage-menu', component:ManageMenuComponent}
     ],
   },
 ];

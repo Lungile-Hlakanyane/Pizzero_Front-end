@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { LoadingController,ToastController,ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { PaymentSuccessComponent } from 'src/app/reuseable-components/payment-successs/payment-success/payment-success.component';
+import { StoreCollectComponent } from 'src/app/reuseable-components/collect -in-store/store-collect/store-collect.component';
 
 @Component({
   selector: 'app-order-review',
@@ -48,9 +49,9 @@ export class OrderReviewComponent  implements OnInit {
   
       // Show the PaymentSuccessComponent modal
       const modal = await this.modalController.create({
-        component: PaymentSuccessComponent,
+        component: StoreCollectComponent,
         cssClass: 'bottom-modal', // Apply the custom CSS class
-        backdropDismiss: true,   // Allow dismissal by tapping outside
+        backdropDismiss: true, 
       });
       return await modal.present();
     }, 3000); // Delay after which the modal is shown (adjust as needed)
@@ -58,6 +59,30 @@ export class OrderReviewComponent  implements OnInit {
   
   goBack(){
     this.router.navigate(['/cart']);
+  }
+
+
+  async justPlaceOrder(){
+     // Step 1: Show the loading spinner
+     const loading = await this.loadingController.create({
+      message: 'Loading....',
+      duration: 3000, // Duration for loading spinner (in ms), adjust as needed
+    });
+    await loading.present();
+  
+    // Step 2: Simulate a delay (this will be handled automatically by the duration)
+    setTimeout(async () => {
+      // Step 3: Hide the loading spinner and show the modal
+      await loading.dismiss();
+  
+      // Show the PaymentSuccessComponent modal
+      const modal = await this.modalController.create({
+        component: PaymentSuccessComponent,
+        cssClass: 'bottom-modal', // Apply the custom CSS class
+        backdropDismiss: true,   // Allow dismissal by tapping outside
+      });
+      return await modal.present();
+    }, 3000); // Delay after which the modal is shown (adjust as needed)
   }
 
 }

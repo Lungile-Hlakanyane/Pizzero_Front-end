@@ -1,0 +1,55 @@
+<ion-content class="ion-padding">
+  <div class="header">
+    <div class="align-horizontal">
+      <h1 class="title" style="color:orange; font-weight: bold;">
+        <ion-icon name="arrow-back-outline" (click)="goBack()" class="back-icon"></ion-icon> View Order<br>
+      </h1>
+    </div>
+
+    <div class="main-content">
+
+      <div class="pizza-img-container" style="text-align:center; align-items: center; justify-content: center ;">
+        <img src="../../../../assets/pizza_03.jpg" style="width:250px; height:250px;">
+      </div>
+
+      <div class="pizza-info" style="display:flex; gap:10px;">
+        <div class="info">
+          <p>Pestero Pizza</p>
+        </div>
+        <div class="info">
+          <p>R120.00</p>
+        </div>
+        <div class="info">
+          <p>Prepparing</p>
+        </div>
+        <div class="info">
+          <p>Small</p>
+        </div>
+
+      </div>
+
+      <div class="order-data" style="display:flex; gap:15px;">
+
+        <div class="order-info">
+          <p style="color:#fff; font-size: 25px; font-weight:bold;">3224</p>
+        </div>
+
+        <div class="order-decription">
+          <p style="color:grey;font-weight:bold;font-size:20px;">Ingredients:</p>
+          <p style="color:grey;font-weight:100;font-size:12px; line-height:17px; position: relative; bottom:17px;">Lorem ipsum dolor 
+            sit amet consectetur adipisicing elit. Deleniti, excepturi.</p>
+          <p style="color:grey;font-weight:bold;font-size:12px; line-height:17px; position: relative; bottom:17px;">Date of Order: 20/01/2025 | 10:34</p>
+          <p style="color:grey;font-weight:bold;font-size:12px; line-height:17px; position: relative; bottom:17px;">Order Type: Delivery</p>
+        <div class="buttons" style="display:flex;justify-content: space-between;">
+          <ion-button expand="block" class="custom-btn" (click)="navigateToTrackOrder()">Track Order</ion-button>
+          <ion-button expand="block" class="custom-btn" (click)="presentActionSheet()">Proof of Reciept</ion-button>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

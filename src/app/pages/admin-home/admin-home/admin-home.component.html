@@ -1,0 +1,92 @@
+<ion-content class="ion-padding">
+
+  <div class="header">
+    <div class="align-horizontal">
+      <h1 class="title" style="color:orange; font-weight: bold;">Welcome<br></h1>
+      <ion-buttons slot="end">
+        <ion-menu-toggle auto-hide="false">
+          <ion-button>
+            <img src="../../assets/icon/bars.svg"/>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+    </div>
+  </div>
+
+  <div class="timer-container">
+    <p style="color:grey;font-size:20px; font-weight: bold;">{{ formattedDate }}</p>
+  </div>
+
+  <div class="admin-card" style="display: flex; gap:15px; height:112px;">
+    <div class="admin-image">
+      <img src="../../../../assets/avatar.png" style="width:100px; height:100px; border-radius: 20px;">
+    </div>
+    <div class="admin-infor" style="position:relative; bottom:15px;">
+      <p style="color:#fff; font-size:20px; font-weight:bold;">Lungile Hlakanyane</p>
+      <p style="color:#fff; font-size:14px; font-weight:100; line-height: 1px;">Store Manager</p>
+      <p style="color:#fff; font-size:14px; font-weight:100; line-height: 1px;">Pizzero Rocklands Store</p>
+      <p style="color:#fff; font-size:14px; font-weight:100; line-height: 1px;">4.3
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+      </p>
+    </div>
+  </div>
+
+  <div class="dashboard" style="position: relative; top:19px;">
+    <ion-grid>
+
+      <ion-row>
+        <ion-col style="align-items: start;">
+          <div class="card" (click)="navigate('/manage-orders')">
+            <p style="color:orange; font-weight:100; font-size:20px;">Total Orders</p>
+            <p style="color:orange; font-weight:bold; font-size:36px; line-height: 1px; position: relative; bottom: 15px;">25</p>
+          </div>
+        </ion-col>
+        <ion-col style="align-items:end; justify-content: end; text-align: end;">
+          <div class="card">
+            <p style="color:orange; font-weight:100; font-size:20px; font-weight: bold;">Order Status</p>
+            <p style="color:orange; font-weight:100; font-size:14px; line-height: 1px; position: relative; bottom: 15px;">Pending:2</p>
+            <p style="color:orange; font-weight:100; font-size:14px; line-height: 1px; position: relative; bottom: 15px;">Completed:5</p>
+            <p style="color:orange; font-weight:100; font-size:14px; line-height: 1px; position: relative; bottom: 15px;">Cancelled:1</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="align-items: start;">
+          <div class="card">
+            <p style="color:orange; font-weight:100; font-size:20px;">Total Revenue</p>
+            <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 15px;">R25,070.00</p>
+          </div>
+        </ion-col>
+        <ion-col style="align-items:end; justify-content: end; text-align: end;">
+          <div class="card">
+            <p style="color:orange; font-weight:bold; font-size:14px;">Average Order Value</p>
+            <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 15px;">R5,070.00</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="align-items: start;">
+          <div class="card">
+            <p style="color:orange; font-weight:bold; font-size:20px;">Customers</p>
+            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">New: 24</p>
+            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Most Active: 678</p>
+            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Total Users: 1000</p>
+          </div>
+        </ion-col>
+        <ion-col style="align-items:end; justify-content: end; text-align: end;">
+          <div class="card">
+            <p style="color:orange; font-weight:100; font-size:14px;">Items on Menu</p>
+            <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 10px;">Total: 14</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </div>
+</ion-content>

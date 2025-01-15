@@ -11,53 +11,53 @@
       <ion-list lines="none">
 
         <ion-item (click)="navigate('/profile')">
-        <ion-icon name="person-circle-outline"></ion-icon>
-          Profile
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        <ion-label>Profile</ion-label>
         </ion-item>
 
-        <ion-item>
-          <ion-icon name="grid-outline"></ion-icon>
-            Dasboard
+        <ion-item *ngIf="role === 'admin'">
+          <ion-icon slot="start" name="grid-outline"></ion-icon>
+          <ion-label>Dashboard</ion-label>
         </ion-item>
 
         <ion-item (click)="navigate('/my-orders')">
-          <ion-icon name="clipboard-outline"></ion-icon>
-            My Orders
+          <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+            <ion-label> My Orders</ion-label>
         </ion-item>
 
-        <ion-item>
-          <ion-icon name="add-outline"></ion-icon>
-            Build Your Own
+        <ion-item (click)="navigate('/build-pizza')">
+          <ion-icon slot="start" name="add-outline" ></ion-icon>
+          <ion-label>Build Your Own Pizza</ion-label>
         </ion-item>
 
         <ion-item (click)="navigate('/track-order')">
-          <ion-icon name="eye-outline"></ion-icon>
-            Track Orders
+          <ion-icon slot="start" name="eye-outline"></ion-icon>
+          <ion-label>Track Order</ion-label>
         </ion-item>
 
         <ion-item>
-          <ion-icon name="gift-outline"></ion-icon>
-           Gifts and Promos
+          <ion-icon slot="start" name="gift-outline"></ion-icon>
+          <ion-label>Gift and Promos</ion-label>
         </ion-item>
 
         <ion-item (click)="navigate('/payment-methods')">
-          <ion-icon name="card-outline"></ion-icon>
-           Payment Methods
+          <ion-icon slot="start" name="card-outline"></ion-icon>
+          <ion-label>Payment Methods</ion-label>
+        </ion-item>
+
+        <ion-item (click)="navigate('/notifications')">
+          <ion-icon slot="start" name="notifications-outline"></ion-icon>
+          <ion-label>Notifications</ion-label>
         </ion-item>
 
         <ion-item>
-          <ion-icon name="notifications-outline"></ion-icon>
-           Notifications
-        </ion-item>
-
-        <ion-item>
-          <ion-icon name="help-circle-outline"></ion-icon>
-           Customer Support
+          <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+          <ion-label>Customer Support</ion-label>
         </ion-item>
 
         <ion-item (click)="logOut()">
-          <ion-icon name="exit-outline"></ion-icon>
-           Log Out
+          <ion-icon slot="start" name="exit-outline"></ion-icon>
+          <ion-label>Logout</ion-label>
         </ion-item>
 
       </ion-list>

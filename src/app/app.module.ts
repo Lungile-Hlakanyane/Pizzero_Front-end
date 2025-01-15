@@ -19,13 +19,23 @@ import { PaymentSuccessComponent } from './reuseable-components/payment-successs
 import { TrackOrderComponent } from './pages/track-order/track-order.component';
 import { BuildPizzaComponent } from './pages/build-pizza/build-pizza/build-pizza.component';
 import { SuccessAddToCardComponent } from './reuseable-components/success-add-to-card/success-add-to-card.component';
+import { AddCardComponent } from './reuseable-components/add-card/add-card.component';
+import { ViewProfileImageComponent } from './reuseable-components/view-profile-image/view-profile-image/view-profile-image.component';
+import { ViewOrderDetailsComponent } from './pages/view-order-details/view-order-details/view-order-details.component';
+import { NotificationsComponent } from './pages/notifications/notifications/notifications.component';
+import { AdminHomeComponent } from './pages/admin-home/admin-home/admin-home.component';
+import { RoleHomeComponent } from './reuseable-components/role-home/role-home/role-home.component';
+import { ManageOrdersComponent } from './pages/manage-orders/manage-orders/manage-orders.component';
+import { ManageMenuComponent } from './pages/manage-menu/manage-menu/manage-menu.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SignUpComponent,
     LoginComponent, ForgotPasswordComponent, OtpComponent,TabsComponent, MyOrdersComponent,
     PaymentMethodsComponent,ProfileComponent, MenuComponent, CartComponent, OrderReviewComponent, 
-    PaymentSuccessComponent, TrackOrderComponent, BuildPizzaComponent, SuccessAddToCardComponent],
+    PaymentSuccessComponent, TrackOrderComponent, BuildPizzaComponent, SuccessAddToCardComponent, 
+    AddCardComponent,ViewOrderDetailsComponent,NotificationsComponent,AdminHomeComponent,RoleHomeComponent,
+    ManageOrdersComponent, ManageMenuComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

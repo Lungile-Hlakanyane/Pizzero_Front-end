@@ -13,45 +13,36 @@
     <img src="../../../../assets/empty-bowl.webp" style="width:100%; height:350px;">
   </div>
 
-  <div class="scroll-container">
-    <div class="sected-options" style="display: flex; gap:10px;">
+  <div class="all-selected-options-container">
 
-      <div class="options">
-        <p style="color:#fff;">Stuffed crust</p>
-        <p style="color:#fff; font-size: 25px; position:relative;top:3px;">
-          <ion-icon name="close-circle-outline"></ion-icon>
-        </p>
+    <div class="scroll-container">
+      <div class="sected-options" style="display: flex; gap:10px;">
+        <div *ngFor="let option of selectedOptions; let i = index" class="options">
+          <p style="color:#fff;">{{ option }}</p>
+          <p
+            style="color:#fff; font-size: 25px; position:relative;top:3px; cursor: pointer;"
+            (click)="removeOption(i)">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </p>
+        </div>
       </div>
-
-      <div class="options">
-        <p style="color:#fff;">Onions</p>
-        <p style="color:#fff; font-size: 25px; position:relative;top:3px;">
-          <ion-icon name="close-circle-outline"></ion-icon>
-        </p>
-      </div>
-      <div class="options">
-        <p style="color:#fff;">Cheese</p>
-        <p style="color:#fff; font-size: 25px; position:relative;top:3px;">
-          <ion-icon name="close-circle-outline"></ion-icon>
-        </p>
-      </div>
-      <div class="options">
-        <p style="color:#fff;">Garlic</p>
-        <p style="color:#fff; font-size: 25px; position:relative;top:3px;">
-          <ion-icon name="close-circle-outline"></ion-icon>
-        </p>
-      </div>
-      <div class="options">
-        <p style="color:#fff;">Bacon</p>
-        <p style="color:#fff; font-size: 25px; position:relative;top:3px;">
-          <ion-icon name="close-circle-outline"></ion-icon>
-        </p>
-      </div>
-      <!-- Add more options as needed -->
     </div>
+  
+    <div class="scroll-container">
+      <div class="sected-options" style="display: flex; gap:10px;">
+        <div *ngFor="let option of selectedToppings; let i = index" class="options">
+          <p style="color:#fff;">{{ option }}</p>
+          <p
+            style="color:#fff; font-size: 25px; position:relative;top:3px; cursor: pointer;"
+            (click)="removeTopping(i)">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
   
-
   <div class="instructions-here">
     <p style="font-size:20px; font-weight:bold; color:grey">Build Your Own Pizza</p>
     <p style="font-style: italic; font-weight: 100; font-size: 15px; color: grey; position: relative; bottom:15px;">By selecting the ingredients below</p>
@@ -59,59 +50,56 @@
 
   <div class="option-container">
     <ion-item>
-      <ion-select label="Select Size" label-placement="floating">
+      <ion-select label="Select Size" label-placement="floating" (ionChange)="onSizeChange($event.detail.value)">
         <ion-select-option value="small">Small, 400g</ion-select-option>
         <ion-select-option value="medium">Medium, 600g</ion-select-option>
         <ion-select-option value="large">Large, 800g</ion-select-option>
       </ion-select>
     </ion-item>
   </div>
-
+  
   <div class="option-container">
     <ion-item>
-      <ion-select label="Select Crust" label-placement="floating">
-        <ion-select-option value="small">
-          <p style="color:#000; font-weight:bold; font-size: 15px;">Stuffed Crust</p>
-          <p style="color:grey; font-weight:100; font-size:10px;">800 Calories, 200g</p>
-        </ion-select-option>
-        <ion-select-option value="small">
-          <p style="color:#000; font-weight:bold; font-size: 15px;">Stuffed Crust</p>
-          <p style="color:grey; font-weight:100; font-size:10px;">800 Calories, 200g</p>
-        </ion-select-option>
-        <ion-select-option value="small">
-          <p style="color:#000; font-weight:bold; font-size: 15px;">Cracker Crust</p>
-          <p style="color:grey; font-weight:100; font-size:10px;">800 Calories, 200g</p>
-        </ion-select-option>
-        <ion-select-option value="small">
-          <p style="color:#000; font-weight:bold; font-size: 15px;">Cheese Crust</p>
-          <p style="color:grey; font-weight:100; font-size:10px;">800 Calories, 200g</p>
-        </ion-select-option>
+      <ion-select
+        label="Select Crust"
+        label-placement="floating"
+        (ionChange)="onCrustChange($event.detail.value)">
+        <ion-select-option value="stuffed-crust">Stuffed Crust</ion-select-option>
+        <ion-select-option value="cracker-crust">Cracker Crust</ion-select-option>
+        <ion-select-option value="cheese-crust">Cheese Crust</ion-select-option>
       </ion-select>
     </ion-item>
   </div>
 
   <div class="option-container">
     <ion-item>
-      <ion-select label="Select Sauce" label-placement="floating">
+      <ion-select
+        label="Select Crust"
+        label-placement="floating"
+        (ionChange)="onSauceChange($event.detail.value)">
         <ion-select-option value="tomatoe-sauce">Tomato Sauce</ion-select-option>
-        <ion-select-option value="marinade-sauce">Marinara Sauce</ion-select-option>
         <ion-select-option value="pesto-sauce">Pesto Sauce</ion-select-option>
         <ion-select-option value="garlic-sauce">Garlic Sauce</ion-select-option>
         <ion-select-option value="ranch-sauce">Ranch Sauce</ion-select-option>
       </ion-select>
     </ion-item>
   </div>
-
+  
   <ion-item>
-    <ion-select aria-label="Toppings" placeholder="Select toppings" [multiple]="true">
+    <ion-select
+      aria-label="Toppings"
+      placeholder="Select toppings"
+      [multiple]="true"
+      (ionChange)="onToppingsChange($event.detail.value)"
+    >
       <ion-select-option value="cheese">Cheese</ion-select-option>
       <ion-select-option value="garlic">Garlic</ion-select-option>
       <ion-select-option value="mozzarella">Mozzarella</ion-select-option>
-      <ion-select-option value="onions">Onios</ion-select-option>
+      <ion-select-option value="onions">Onions</ion-select-option>
       <ion-select-option value="sausage">Sausage</ion-select-option>
     </ion-select>
   </ion-item>
-
+  
   <div class="action-btn-container">
     <ion-button expand="block" class="custom-btn" (click)="addToCart()">Add To Cart</ion-button>
   </div>

@@ -1,0 +1,47 @@
+.info{
+    border-radius: 15px;
+    border: 1px solid orange;
+    height: 35px;
+    width:auto;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    background-color: orange;
+    color:#fff;
+}
+
+.pizza-info {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Prevents items from wrapping to the next line */
+    padding: 10px; /* Optional: Adds some space inside the container */
+}
+
+.order-data{
+    position: relative;
+    top:15px;
+    height:auto;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+
+.order-info{
+    background-color: orange;
+    border-radius: 15px;
+    padding:5px;
+}
+
+.custom-btn{
+    border: 1px solid #fff;
+    height: 35px;
+    width:auto;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    color:orange;
+    --background: #fff;
+}

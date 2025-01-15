@@ -7,7 +7,14 @@
       Sign In to Pizzaro
     <p>
   </div>
- 
+
+  <ion-item>
+    <ion-select aria-label="Select Role" [(ngModel)]="selectedRole">
+      <ion-select-option value="customer">Customer</ion-select-option>
+      <ion-select-option value="admin">Admin/Store Manager</ion-select-option>
+    </ion-select>
+  </ion-item>
+   
  <div class="input-form">
   <form>
     <ion-item>

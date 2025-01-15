@@ -1,0 +1,58 @@
+<ion-content class="ion-padding">
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color: orange; font-weight: bold;">
+        <ion-icon name="arrow-back-sharp" style="position: relative; top: 5px;" (click)="goBack()"></ion-icon>
+        Manage Menu<br></h1>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="search-container">
+      <ion-item lines="none">
+        <ion-icon name="search-outline" slot="start"></ion-icon>
+        <ion-input type="text"placeholder="Search Pizza"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="created-pizzas-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="pizza-card" (click)="presentActionSheet()">
+             <div class="pizza-image">
+              <img src="../../../../assets/pizza_02.JPG">
+             </div>
+             <div class="data">
+              <p style="color:grey;font-weight:bold; font-size:15">Pizza Pastero</p>
+              <p style="color:grey;font-weight:bold; font-size:15">Small</p>
+              <p style="color:orange;font-weight:bold; font-size:12; line-height:1px; line-height:1px;">R120.00</p>
+              <p style="color:grey;font-weight:bold; font-size:10; line-height:1px;">Ingredients:</p>
+              <p style="color:grey; font-weight: 100; line-height:15px;">Lorem ipsum dolor sit amet.</p>
+             </div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="pizza-card">
+             <div class="pizza-image">
+              <img src="../../../../assets/pizza_02.JPG">
+             </div>
+             <div class="data">
+              <p style="color:grey;font-weight:bold; font-size:15">Pizza Pastero</p>
+              <p style="color:grey;font-weight:bold; font-size:15">Small</p>
+              <p style="color:orange;font-weight:bold; font-size:12; line-height:1px; line-height:1px;">R120.00</p>
+              <p style="color:grey;font-weight:bold; font-size:10; line-height:1px;">Ingredients:</p>
+              <p style="color:grey; font-weight: 100; line-height:15px;">Lorem ipsum dolor sit amet.</p>
+             </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="add-new-pizza">
+      <ion-button expand="block" class="custom-btn">
+        <ion-icon name="add"></ion-icon> Add New Pizza
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

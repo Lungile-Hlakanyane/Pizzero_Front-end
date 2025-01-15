@@ -19,17 +19,19 @@
       </div>
       <div>
         <p style="color:grey; font-size: 12px;">You Profile photo will appear on devices that use your Pizzero account.</p>
-        <ion-button expand="block" class="custom-btn">CHANGE PHOTO</ion-button>
+        <ion-button expand="block" class="custom-btn" (click)="presentActionSheet()">CHANGE PHOTO</ion-button>
       </div>
     </div>
 
     <hr class="horizontal-line">
-    <div class="user-card-data" style="display: flex; justify-content: space-between;">
-      <p style="color:grey; font-size: 13px;">Full Name</p>
-      <p style="color:black;font-weight: bold; font-size: 13px;">LUNGILE HLAKANYANE</p>
-      <p style="color:orange; font-size: 13px;">Edit name</p>
-    </div>
 
+    <div class="user-card-data" style="display: flex; justify-content: space-between; padding-left: 10px; padding-right: 10px;">
+      <ion-input label="FULL NAME" labelPlacement="floating" placeholder="lungile halakanyane"></ion-input>
+      <p style="color:orange; font-size: 25px; position:relative;bottom:9px;">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </p>
+    </div>
+    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
   <div class="profile-card" style="position: relative; top:15px;">
@@ -39,18 +41,19 @@
         <ion-col><p style="color:orange;font-weight:100; text-align: end;">Edit Profile Info</p></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">Date of birth</p></ion-col>
-        <ion-col><p style="color:#000;font-weight:100;">20/08/2000</p></ion-col>
+        <ion-col><p style="color:grey;font-weight: 100;">DATE OF BIRTH</p></ion-col>
+        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">Region</p></ion-col>
-        <ion-col><p style="color:#000;font-weight:100;">Free State</p></ion-col>
+        <ion-col><p style="color:grey;font-weight: 100;">REGION</p></ion-col>
+        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">Location</p></ion-col>
-        <ion-col><p style="color:#000;font-weight:100;">1 Mangaung Bloemfontein Free State 9323</p></ion-col>
+        <ion-col><p style="color:grey;font-weight: 100;">ADDRESS</p></ion-col>
+        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
       </ion-row>
     </ion-grid>
+    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
   <div class="profile-card" style="position: relative; top:35px;">
@@ -61,13 +64,14 @@
       </ion-row>
       <ion-row>
         <ion-col><p style="color:grey;font-weight: 100;">Email</p></ion-col>
-        <ion-col><p style="color:#000;font-weight:100;">lungilehlaka.co.za</p></ion-col>
+        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">Phone</p></ion-col>
-        <ion-col><p style="color:#000;font-weight:100;">0656352578</p></ion-col>
+        <ion-col><p style="color:grey;font-weight: 100;">PHONE</p></ion-col>
+        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
       </ion-row>
     </ion-grid>
+    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
   <div class="profile-card" style="position: relative; top:55px;">
@@ -77,10 +81,11 @@
         <ion-col><p style="color:orange;font-weight:100; text-align: end;">Edit Language Info</p></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">Language</p></ion-col>
-        <ion-col><p style="color:#000;font-weight:100;">Isixhosa(SA)</p></ion-col>
+        <ion-col><p style="color:grey;font-weight: 100;">LANGUAGE</p></ion-col>
+        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
       </ion-row>
     </ion-grid>
+    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
 </ion-content>

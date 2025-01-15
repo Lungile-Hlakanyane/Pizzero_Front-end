@@ -25,4 +25,8 @@ export class MyOrdersComponent  implements OnInit {
     this.router.navigateByUrl('/home') 
   }
 
+  navigateToViewOrderDetails(){
+    this.router.navigateByUrl('/view-order-details');
+  }
+
 }

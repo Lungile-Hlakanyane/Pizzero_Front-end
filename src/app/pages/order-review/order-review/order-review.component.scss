@@ -95,3 +95,48 @@ ion-item{
 .custom-btn{
     --background: orange;
 }
+
+.deals-card {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 10px;
+    scrollbar-width: thin; /* For Firefox: makes the scrollbar thinner */
+    scrollbar-color: #ccc transparent; /* Customize scrollbar colors */
+}
+  
+.deals-card::-webkit-scrollbar {
+    height: 8px; /* Adjust scrollbar height */
+}
+  
+.deals-card::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Scrollbar color */
+    border-radius: 10px;
+}
+  
+.deals-card::-webkit-scrollbar-track {
+    background-color: transparent; /* Scrollbar track color */
+}
+  
+.pizza-deal-card {
+    flex: 0 0 auto; /* Prevent shrinking and ensure elements are side by side */
+    display: flex;
+    align-items: center;
+}
+  
+.pizza-deal-card img {
+    border: 1px solid;
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+}
+
+.store-info{
+    border-radius: 20px;
+    background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    height:85px;
+}
+  

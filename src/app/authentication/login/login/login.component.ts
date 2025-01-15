@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { LoadingController,ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-login',
@@ -21,34 +22,6 @@ export class LoginComponent  implements OnInit {
 
   ngOnInit() {}
 
-  login() {
-    // Step 1: Show the loading spinner with 'Loading...' text
-    this.loadingController.create({
-      message: 'Loading...',  // Loading message   // Optional: spinner style (other options available)
-    }).then(loading => {
-      loading.present(); // Show the loading spinner
-  
-      // Step 2: Simulate a delay (e.g., network request, processing, etc.)
-      setTimeout(() => {
-        // Step 3: Dismiss the loading spinner
-        loading.dismiss();
-  
-        // Step 4: Show a success toast
-        this.toastController.create({
-          message: 'Login successfully',  // Success message
-          duration: 2000,                          // Duration of toast (in milliseconds)
-          position: 'top',       
-          color:'success'                  // Position of the toast (can be 'top', 'bottom', 'middle')
-        }).then(toast => {
-          toast.present(); // Show the toast
-        });
-  
-        // Step 5: Navigate to the login page
-        this.router.navigate(['/home']);
-      }, 3000); // Simulate a delay of 3 seconds (adjust this based on your real logic)
-    });
-  }
-
   justRegister(){
     this.router.navigate(['/sign-up']);
   }
@@ -57,4 +30,21 @@ export class LoginComponent  implements OnInit {
     this.router.navigate(['/forgot-password'])
   }
 
+  selectedRole: string = 'customer'; // Default value
+
+  async login() {
+    const userRole = this.selectedRole;
+  
+    // Save the role to Capacitor Preferences
+    await Preferences.set({ key: 'user', value: JSON.stringify({ role: userRole }) });
+  
+    if (userRole === 'admin') {
+      this.router.navigateByUrl('/admin-home'); // Navigate to Admin Home
+    } else if (userRole === 'customer') {
+      this.router.navigateByUrl('/home'); // Navigate to default Home
+    } else {
+      console.error('Invalid role selected');
+    }
+  }
+  
 }

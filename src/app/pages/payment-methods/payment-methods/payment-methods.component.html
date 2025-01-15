@@ -15,7 +15,19 @@
       </ion-item>
     </div>
 
-    <p style="color:#000; font-weight: bold;">Select Payment Method</p>
+    <div class="search-container">
+      <ion-item lines="none" (click)="openAddCardModal()">
+        <div class="space-add-card" style="display: flex; gap:15px; text-align: center; justify-content: center; align-items: center;">
+          <div>
+            <p style="color:grey; font-size: 19px; font-weight: bold;"><ion-icon name="add-outline"></ion-icon></p>
+          </div>
+          <div>
+            <p style="color:grey">Add New Card</p>
+          </div>
+        </div>
+      </ion-item>
+    </div>
+
     <div class="main-content">
 
       <div class="pizza-cart" style="display: flex; gap:20px; justify-content: space-between;">

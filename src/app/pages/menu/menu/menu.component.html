@@ -10,7 +10,6 @@
   </div>
 
   <div class="tab-filters">
-
     <div class="tabs-container">
       <div class="tabs">
         <button
@@ -62,8 +61,14 @@
       <div *ngIf="isActiveSection('all')" class="section">
 
         <div class="heading" style="display: flex; justify-content: space-between;">
-          <p style="color:grey;font-weight:bold; font-size:18px;">6 items</p>
-          <p style="color:grey;font-size: 15px; font-weight:100; position: relative; top:10px">Filter By</p>
+          <p style="color:grey;font-weight:bold; font-size:18px; position: relative; top:12px;">6 items</p>
+          <ion-item>
+            <ion-select aria-label="Favorite Pizza" placeholder="filter by">
+              <ion-select-option value="price">Price</ion-select-option>
+              <ion-select-option value="name">Name</ion-select-option>
+              <ion-select-option value="size">Size</ion-select-option>
+            </ion-select>
+          </ion-item>
         </div>
         <div class="grid-table">
           <ion-grid>

@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController, ToastController } from '@ionic/angular';
 import { Preferences } from '@capacitor/preferences';
 import { LoadingController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-root',
@@ -11,14 +10,23 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
   standalone: false,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  role: string = '';
 
   constructor(
     private menuController: MenuController,
     private router: Router,
     private loadingController:LoadingController,
     private toastController:ToastController
-  ) {}
+  ) {
+    this.getUserRole();
+  }
+
+  async ngOnInit() {
+    await this.getUserRole();
+  }
+
 
   closeMenu() {
     this.menuController.close();
@@ -58,6 +66,19 @@ export class AppComponent {
   navigate(link: any): void {
     this.router.navigateByUrl(link);
     this.menuController.close();
+  }
+
+
+  async getUserRole() {
+    const ret = await Preferences.get({ key: 'user' });
+    if (ret.value) {
+      const user = JSON.parse(ret.value);
+      this.role = user.role; // Set the role
+      console.log('User role:', this.role);
+    } else {
+      console.warn('No user role found, redirecting to login.');
+      this.router.navigateByUrl('/login');
+    }
   }
   
 }
