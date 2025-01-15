@@ -27,6 +27,8 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home/admin-home.com
 import { RoleHomeComponent } from './reuseable-components/role-home/role-home/role-home.component';
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders/manage-orders.component';
 import { ManageMenuComponent } from './pages/manage-menu/manage-menu/manage-menu.component';
+import { AddPizzaModalComponent } from './reuseable-components/add-pizza-modal/add-pizza-modal/add-pizza-modal.component';
+import { PizzaAddedSuccessComponent } from './reuseable-components/pizza-added-success/pizza-added-success/pizza-added-success.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +37,7 @@ import { ManageMenuComponent } from './pages/manage-menu/manage-menu/manage-menu
     PaymentMethodsComponent,ProfileComponent, MenuComponent, CartComponent, OrderReviewComponent, 
     PaymentSuccessComponent, TrackOrderComponent, BuildPizzaComponent, SuccessAddToCardComponent, 
     AddCardComponent,ViewOrderDetailsComponent,NotificationsComponent,AdminHomeComponent,RoleHomeComponent,
-    ManageOrdersComponent, ManageMenuComponent],
+    ManageOrdersComponent, ManageMenuComponent,AddPizzaModalComponent,PizzaAddedSuccessComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

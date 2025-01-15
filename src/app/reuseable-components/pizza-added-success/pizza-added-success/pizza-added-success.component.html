@@ -1,0 +1,27 @@
+<ion-content class="ion-padding" id="border-success-card">
+  
+  <div class="border-success-card">
+
+    <div class="header">
+      <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+        <h1 class="title" style="color:orange; font-weight: bold;">Pizza Added <br></h1>
+        <ion-buttons slot="end" (click)="closeModal()">
+          <ion-icon name="close">Close</ion-icon>
+        </ion-buttons>
+      </div>
+    </div>
+  
+    <div class="center" style="justify-content: center; align-items: center; text-align: center;">
+      <img src="../../../../assets/success-icon.png" style="width: 100px; height:100px;">
+      <P style="color:#000; font-size:30px; font-weight:bold">Pizza successfully added in the online app store</P>
+    </div>
+  
+    <div class="action-btn-container" style="display: flex; gap:10px;">
+      <ion-button expand="block" class="custom-btn" (click)="closeModal()">
+        OK
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

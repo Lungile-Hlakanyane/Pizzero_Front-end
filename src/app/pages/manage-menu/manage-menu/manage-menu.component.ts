@@ -3,6 +3,8 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { AddPizzaModalComponent } from 'src/app/reuseable-components/add-pizza-modal/add-pizza-modal/add-pizza-modal.component';
 
 @Component({
   selector: 'app-manage-menu',
@@ -14,7 +16,8 @@ export class ManageMenuComponent  implements OnInit {
 
   constructor(
     private router:Router,
-    private actionSheetController:ActionSheetController
+    private actionSheetController:ActionSheetController,
+    private modalController:ModalController
   ) { }
 
   ngOnInit() {}
@@ -57,6 +60,16 @@ export class ManageMenuComponent  implements OnInit {
 
   async delete() {
     // implementation here
+  }
+
+  async addPizza(){
+    const modal = await this.modalController.create({
+      component: AddPizzaModalComponent,
+      cssClass: 'bottom-modal',
+      backdropDismiss: true,
+      componentProps: {  },
+    });
+    await modal.present();
   }
 
 }
