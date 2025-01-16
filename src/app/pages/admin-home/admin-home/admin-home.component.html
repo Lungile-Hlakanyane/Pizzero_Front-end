@@ -45,7 +45,7 @@
           </div>
         </ion-col>
         <ion-col style="align-items:end; justify-content: end; text-align: end;">
-          <div class="card">
+          <div class="card" (click)="navigate('/manage-orders')">
             <p style="color:orange; font-weight:100; font-size:20px; font-weight: bold;">Order Status</p>
             <p style="color:orange; font-weight:100; font-size:14px; line-height: 1px; position: relative; bottom: 15px;">Pending:2</p>
             <p style="color:orange; font-weight:100; font-size:14px; line-height: 1px; position: relative; bottom: 15px;">Completed:5</p>
@@ -56,13 +56,13 @@
 
       <ion-row>
         <ion-col style="align-items: start;">
-          <div class="card">
+          <div class="card" (click)="navigate('/revenue')">
             <p style="color:orange; font-weight:100; font-size:20px;">Total Revenue</p>
             <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 15px;">R25,070.00</p>
           </div>
         </ion-col>
         <ion-col style="align-items:end; justify-content: end; text-align: end;">
-          <div class="card">
+          <div class="card" (click)="navigate('/revenue')">
             <p style="color:orange; font-weight:bold; font-size:14px;">Average Order Value</p>
             <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 15px;">R5,070.00</p>
           </div>
@@ -71,7 +71,7 @@
 
       <ion-row>
         <ion-col style="align-items: start;">
-          <div class="card">
+          <div class="card" (click)="navigate('/manage-customers')">
             <p style="color:orange; font-weight:bold; font-size:20px;">Customers</p>
             <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">New: 24</p>
             <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Most Active: 678</p>
@@ -79,14 +79,12 @@
           </div>
         </ion-col>
         <ion-col style="align-items:end; justify-content: end; text-align: end;">
-          <div class="card">
+          <div class="card" (click)="navigate('/manage-menu')">
             <p style="color:orange; font-weight:100; font-size:14px;">Items on Menu</p>
             <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 10px;">Total: 14</p>
           </div>
         </ion-col>
       </ion-row>
-
     </ion-grid>
-
   </div>
 </ion-content>

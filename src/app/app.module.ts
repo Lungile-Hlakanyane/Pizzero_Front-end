@@ -29,6 +29,11 @@ import { ManageOrdersComponent } from './pages/manage-orders/manage-orders/manag
 import { ManageMenuComponent } from './pages/manage-menu/manage-menu/manage-menu.component';
 import { AddPizzaModalComponent } from './reuseable-components/add-pizza-modal/add-pizza-modal/add-pizza-modal.component';
 import { PizzaAddedSuccessComponent } from './reuseable-components/pizza-added-success/pizza-added-success/pizza-added-success.component';
+import { RevenueComponent } from './pages/revenue/revenue/revenue.component';
+import { ManageCustomersComponent } from './pages/manage-customers/manage-customers/manage-customers.component';
+import { ViewCustomerComponent } from './pages/view-customer/view-customer/view-customer.component';
+import { DeliveriesComponent } from './pages/deliveries/deliveries/deliveries.component';
+import { CustomerRateComponent } from './pages/customer-rate/customer-rate/customer-rate.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +42,8 @@ import { PizzaAddedSuccessComponent } from './reuseable-components/pizza-added-s
     PaymentMethodsComponent,ProfileComponent, MenuComponent, CartComponent, OrderReviewComponent, 
     PaymentSuccessComponent, TrackOrderComponent, BuildPizzaComponent, SuccessAddToCardComponent, 
     AddCardComponent,ViewOrderDetailsComponent,NotificationsComponent,AdminHomeComponent,RoleHomeComponent,
-    ManageOrdersComponent, ManageMenuComponent,AddPizzaModalComponent,PizzaAddedSuccessComponent],
+    ManageOrdersComponent, ManageMenuComponent,AddPizzaModalComponent,PizzaAddedSuccessComponent,RevenueComponent, 
+    ManageCustomersComponent, ViewCustomerComponent, DeliveriesComponent, CustomerRateComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

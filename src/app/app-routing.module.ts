@@ -18,6 +18,10 @@ import { NotificationsComponent } from './pages/notifications/notifications/noti
 import { AdminHomeComponent } from './pages/admin-home/admin-home/admin-home.component';
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders/manage-orders.component';
 import { ManageMenuComponent } from './pages/manage-menu/manage-menu/manage-menu.component';
+import { RevenueComponent } from './pages/revenue/revenue/revenue.component';
+import { ManageCustomersComponent } from './pages/manage-customers/manage-customers/manage-customers.component';
+import { ViewCustomerComponent } from './pages/view-customer/view-customer/view-customer.component';
+import { DeliveriesComponent } from './pages/deliveries/deliveries/deliveries.component';
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
@@ -28,6 +32,7 @@ const routes: Routes = [
   { path: 'track-order', component:TrackOrderComponent},
   { path: 'view-order-details',component:ViewOrderDetailsComponent},
   { path: 'notifications', component:NotificationsComponent},
+  { path: 'view-customer', component:ViewCustomerComponent},
   {
     path: '',
     component: TabsComponent,
@@ -42,7 +47,10 @@ const routes: Routes = [
       { path: 'cart', component:CartComponent},
       { path: 'build-pizza', component:BuildPizzaComponent},
       { path: 'manage-orders', component:ManageOrdersComponent},
-      { path: 'manage-menu', component:ManageMenuComponent}
+      { path: 'manage-menu', component:ManageMenuComponent},
+      { path: 'revenue', component:RevenueComponent},
+      { path: 'manage-customers',component:ManageCustomersComponent},
+      { path: 'deliveries', component:DeliveriesComponent}
     ],
   },
 ];

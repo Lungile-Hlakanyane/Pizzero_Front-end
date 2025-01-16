@@ -1,0 +1,91 @@
+.address-card{
+    border-radius: 20px;
+    background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.filters{
+    display: flex;
+    gap:10px;
+    justify-content: space-around;
+}
+
+.filter{
+    border: 1px solid grey;
+    width: auto;
+    height: 15px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 10px;
+}
+
+.active-tab{
+    --background: green;
+}
+
+.sections {
+    margin-top: 20px;
+}
+  
+.section {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+  
+.tab.active {
+    background-color: #009688;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tabs-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent tabs from wrapping to the next line */
+    padding: 10px 0;
+}
+  
+.tab {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #555;
+    padding: 8px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tabs {
+    display: inline-flex;
+    gap: 10px; /* Space between tabs */
+}
+  
+.tab:hover {
+    background-color: #f5f5f5;
+}
+  
+
+ion-item{
+    border-radius: 20px;
+    --background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+  
+.payment-card-history{
+    border-radius: 20px;
+    background: #F8F5F5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.custom-btn{
+    --background:orange;
+}

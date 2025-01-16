@@ -1,0 +1,89 @@
+.custom-btn{
+    --background: orange;
+}
+
+.border-success-card{
+    border: 1px solid #e0e0e0; /* Optional: Add a border for separation */
+    border-radius: 15px; /* Optional: Add rounded corners */
+    background-color: #fff; /* Optional: Set a background color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    height:auto;
+}
+
+.custom-btn{
+    --background: orange;
+}
+
+.name-label,.review,
+.question {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    color: #455A64;
+}
+
+.review{
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.question {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.profile {
+    border-radius: 20px;
+    border: 5px;
+    border: 5px transparent;
+    height: 120px;
+    width: 120px;
+}
+
+ion-icon {
+    margin-right: 10px;
+}
+
+// star-rating.component.scss
+.icon-rating {
+    font-size: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+ion-icon {
+    width: 10px;
+    height: 10px;
+}
+
+ion-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.value,label {
+    font-weight: 400;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 12px;
+    line-height: 13px;
+    color: #455A64;
+}
+
+p {
+    margin: 0;
+}
+
+.label {
+    color: #1A457C;
+}
+
+a{
+    color:#1A457C
+}

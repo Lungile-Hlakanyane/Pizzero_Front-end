@@ -1,0 +1,71 @@
+<ion-content class="ion-padding">
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color: orange; font-weight: bold;">
+        <ion-icon name="arrow-back-sharp" style="position: relative; top: 5px;" (click)="goBack()"></ion-icon>
+        Total Revenue<br>
+      </h1>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="tab-filters">
+      <div class="tabs-container">
+        <div class="tabs">
+          <button
+            class="tab"
+            [class.active]="isActiveSection('today')"
+            (click)="showSection('today')">
+            Today
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('this-week')"
+            (click)="showSection('this-week')">
+            This Week
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('this-month')"
+            (click)="showSection('this-month')">
+            This Month
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Content for Today -->
+      <div *ngIf="activeSection === 'today'">
+
+       <p style="color:grey; font-size:27px; font-weight:bold">Hello, Lungile</p>
+       <p style="color:grey; font-size:13px; font-weight:100; position: relative; bottom:28px;">Look at your store analytics</p>
+       <p style="color:grey; font-size:13px; font-weight:100;">Updated 2 hrs ago</p>
+       <div class="revenue-card">
+        <p style="color:grey; font-size:27px; font-weight:bold; position: relative; bottom:20px;">Total Revenue</p>
+        <p style="color:grey; font-size:13px; font-weight:100; position: relative; bottom:45px;">Generated</p>
+        <p style="color:grey; font-size:37px; font-weight:bold; position: relative; bottom:77px;">R4,000.00</p>
+       </div>
+
+       <div class="revenue-card" style="height:80px; position: relative; top:15px;">
+        <p style="color:grey; font-size:27px; font-weight:bold; position: relative; bottom:20px;">Total Orders</p>
+        <p style="color:grey; font-size:13px; font-weight:100; position: relative; bottom:45px;">250</p>
+       </div>
+
+       <div class="action-btn-container" style="position: relative; top:120px;">
+        <ion-button expand="block" class="custom-btn" (click)="reload()">Reload</ion-button>
+       </div>
+      </div>
+
+      <!-- Content for This Week -->
+      <div *ngIf="activeSection === 'this-week'">
+        
+      </div>
+
+      <!-- Content for This Month -->
+      <div *ngIf="activeSection === 'this-month'">
+        
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-content class="ion-padding">
+  
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color: orange; font-weight: bold;">
+        <ion-icon name="arrow-back-sharp" style="position: relative; top: 5px;" (click)="goBack()"></ion-icon>
+        Manage Customers<br>
+      </h1>
+    </div>
+  </div>
+
+  <div class="main-container">
+
+    <div class="search-container">
+      <ion-item lines="none">
+        <ion-icon name="search-outline" slot="start"></ion-icon>
+        <ion-input type="text"placeholder="Search Customers"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="tab-filters">
+      <div class="tabs-container">
+        <div class="tabs">
+          <button
+            class="tab"
+            [class.active]="isActiveSection('today')"
+            (click)="showSection('today')">
+            All Customers(446)
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('this-week')"
+            (click)="showSection('this-week')">
+              Registered This Week(7)
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('this-month')"
+            (click)="showSection('this-month')">
+            Registered This Month(100)
+          </button>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="customers-list-container">
+      <div class="customer-card" style="display:flex; gap:15px" (click)="viewCustomer()">
+        <div>
+          <img src="../../../../assets/avatar.png" style="width: 90px; height:70px; border-radius: 30px;">
+        </div>
+        <div class="customer-info" style="position:relative; top:8px;">
+          <p style="color:grey; font-weight:bold; line-height: 1px;">Vincent Wittes</p>
+          <p style="color:grey; font-weight:100; line-height: 1px; font-size:12px">vincent.co.za</p>
+          <p style="color:grey; font-weight:100; line-height: 1px; font-size:12px">+27 67 642 6451</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

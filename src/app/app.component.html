@@ -10,9 +10,9 @@
 
       <ion-list lines="none">
 
-        <ion-item (click)="navigate('/profile')">
-        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-        <ion-label>Profile</ion-label>
+        <ion-item (click)="navigate('/profile')" *ngIf="role === 'customer' || role==='admin'">
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          <ion-label>Profile</ion-label>
         </ion-item>
 
         <ion-item *ngIf="role === 'admin'">
@@ -20,37 +20,47 @@
           <ion-label>Dashboard</ion-label>
         </ion-item>
 
-        <ion-item (click)="navigate('/my-orders')">
+        <ion-item (click)="navigate('/my-orders')" *ngIf="role === 'customer'">
           <ion-icon slot="start" name="clipboard-outline"></ion-icon>
             <ion-label> My Orders</ion-label>
         </ion-item>
 
-        <ion-item (click)="navigate('/build-pizza')">
+        <ion-item (click)="navigate('/build-pizza')" *ngIf="role === 'customer'">
           <ion-icon slot="start" name="add-outline" ></ion-icon>
           <ion-label>Build Your Own Pizza</ion-label>
         </ion-item>
 
-        <ion-item (click)="navigate('/track-order')">
+        <ion-item (click)="navigate('/track-order')" *ngIf="role === 'customer'">
           <ion-icon slot="start" name="eye-outline"></ion-icon>
           <ion-label>Track Order</ion-label>
         </ion-item>
 
-        <ion-item>
+        <ion-item *ngIf="role === 'customer'">
           <ion-icon slot="start" name="gift-outline"></ion-icon>
           <ion-label>Gift and Promos</ion-label>
         </ion-item>
 
-        <ion-item (click)="navigate('/payment-methods')">
+        <ion-item (click)="navigate('/payment-methods')" *ngIf="role === 'customer'">
           <ion-icon slot="start" name="card-outline"></ion-icon>
           <ion-label>Payment Methods</ion-label>
         </ion-item>
 
-        <ion-item (click)="navigate('/notifications')">
+        <ion-item (click)="navigate('/notifications')" *ngIf="role === 'customer'">
           <ion-icon slot="start" name="notifications-outline"></ion-icon>
           <ion-label>Notifications</ion-label>
         </ion-item>
 
-        <ion-item>
+        <ion-item (click)="navigate('/manage-customers')"  *ngIf="role === 'admin'">
+          <ion-icon slot="start" name="people-circle-outline"></ion-icon>
+          <ion-label>Manage Customers</ion-label> 
+        </ion-item>
+
+        <ion-item (click)="navigate('/deliveries')"  *ngIf="role === 'admin'">
+          <ion-icon slot="start" name="car-outline"></ion-icon>
+          <ion-label>Deliveries</ion-label> 
+        </ion-item>
+
+        <ion-item *ngIf="role === 'admin'">
           <ion-icon slot="start" name="help-circle-outline"></ion-icon>
           <ion-label>Customer Support</ion-label>
         </ion-item>

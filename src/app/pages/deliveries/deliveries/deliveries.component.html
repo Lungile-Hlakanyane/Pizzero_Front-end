@@ -1,0 +1,119 @@
+<ion-content class="ion-padding">
+
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color:orange; font-weight: bold;">Deliveries<br></h1>
+    </div>
+  </div>
+
+  <div class="main-container">
+
+    <div class="tab-filters">
+      <div class="tabs-container">
+        <div class="tabs">
+          <button
+            class="tab"
+            [class.active]="isActiveSection('today')"
+            (click)="showSection('today')">
+            Today
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('this-week')"
+            (click)="showSection('this-week')">
+            This Week
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('this-month')"
+            (click)="showSection('this-month')">
+            This Month
+          </button>
+        </div>
+      </div>
+      
+      <div class="del-time-container">
+        <p style="color:grey; font-style: italic; font-size: 12px; position: relative; bottom:10px">The average delivery time for Pizzero is 27min</p>
+       </div>
+       
+      <div class="sections">
+        <div *ngIf="activeSection === 'today'" class="section-content">
+  
+         <div style="display:flex; justify-content: space-between;">
+          <div>
+            <h2 style="color:grey; font-weight: bold;">Today's Deliveries</h2>
+          </div>
+  
+          <div class="filter-orders" style="position: relative; bottom:10px;">
+            <ion-item>
+              <ion-select value="name">
+                <ion-select-option value="name">Status</ion-select-option>
+                <ion-select-option value="date">Date</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+         </div>
+
+          <ion-grid class="table">
+            <ion-row>
+              <ion-col>
+                <p style="color:#000; font-size: 13px; font-weight: bold;">Order</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:#000; font-size: 13px; font-weight: bold;">Customer</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:#000; font-size: 13px; font-weight: bold;">Status</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:#000; font-size: 13px; font-weight: bold;">Total</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">#6757</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">Lungile</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">Prepparing</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">R120.00</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">#6767</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">Luyanda</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">Delivered</p>
+              </ion-col>
+              <ion-col>
+                <p style="color:grey; font-size: 13px;">R120.00</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+  
+          <div class="action-btn-container">
+            <ion-button expand="block" class="custom-btn" (click)="presentActionSheet()">View Report</ion-button>
+          </div>
+        </div>
+  
+        <div *ngIf="activeSection === 'this-week'" class="section-content">
+          <h2 style="color:grey; font-weight: bold;">This Week's Orders</h2>
+        </div>
+  
+        <div *ngIf="activeSection === 'this-month'" class="section-content">
+          <h2 style="color:grey; font-weight: bold;">This Months's Orders</h2>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+</ion-content>

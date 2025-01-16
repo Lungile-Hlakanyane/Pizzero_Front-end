@@ -1,0 +1,116 @@
+<ion-content class="ion-padding">
+  
+  <div class="header">
+    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
+      <h1 class="title" style="color: orange; font-weight: bold;">
+        <ion-icon name="arrow-back-sharp" style="position: relative; top: 5px;" (click)="goBack()"></ion-icon>
+          View Customer<br>
+      </h1>
+    </div>
+  </div>
+
+  <div class="main-container" style="position: relative; top:25px;">
+
+    <div class="center" style="align-items: center; justify-content: center; text-align: center;">
+
+      <div class="center-img" style="align-items: center; justify-content: center; text-align: center;">
+        <img src="../../../../assets/avatar.png" style="width:150px; height:150px; border-radius: 20px;">
+        <p style="color:grey; font-weight:bold; font-size:30px; line-height:1px;">Vincent Wittes</p>
+        <p style="color:grey; font-weight:100; font-size:15px; line-height:1px;">+27 667 664 5632</p>
+        <p style="color:grey; font-weight:100; font-size:15px; line-height: 1px;">vincent.co.za</p>
+      </div>
+
+      <div class="address-card">
+        <p style="color:orange; font-size: 15px; position: relative; top:10px; font-weight: bold;">Delivery Address</p>
+        <p style="color:grey; font-weight: 100; font-size: 15px;">27751 Namibia Rockland Bloemfontein Free State</p>
+      </div>
+      
+    </div>
+
+    <div class="tabs">
+
+      <div class="tabs-container">
+
+        <div class="tabs">
+          <button
+            class="tab"
+            [class.active]="isActiveSection('payments')"
+            (click)="showSection('payments')">
+            Payments
+          </button>
+          <button
+            class="tab"
+            [class.active]="isActiveSection('report')"
+            (click)="showSection('report')">
+            Report
+          </button>
+        </div>
+        
+      </div>
+
+   </div>
+
+   <div class="sections" style="position: relative; bottom:35px;">
+    <!-- Payments Section -->
+    <div
+      *ngIf="isActiveSection('payments')"
+      class="section">
+      <h2 style="color:grey; font-weight:bold">Payments</h2>
+      <div class="payment-card-history">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p style="font-size:10px; font-weight:bold">ID</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px; font-weight:bold">Date</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px; font-weight:bold">Method</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px; font-weight:bold">Status</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px; font-weight:bold">Amount</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <p style="font-size:10px">675</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px">11/09/24</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px">Visa</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px">Paid</p>
+            </ion-col>
+            <ion-col>
+              <p style="font-size:10px">R120.00</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+      <div class="action-btn-container">
+        <ion-button expand="block" class="custom-btn" (click)="presentActionSheet()">View</ion-button>
+      </div>
+      
+    </div>
+
+    <!-- Report Section -->
+    <div
+      *ngIf="isActiveSection('report')"
+      class="section">
+      <h2 style="color:grey; font-weight:bold">Report</h2>
+    </div>
+        
+   </div>
+
+
+  </div>
+
+</ion-content>
