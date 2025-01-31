@@ -34,6 +34,9 @@ import { ManageCustomersComponent } from './pages/manage-customers/manage-custom
 import { ViewCustomerComponent } from './pages/view-customer/view-customer/view-customer.component';
 import { DeliveriesComponent } from './pages/deliveries/deliveries/deliveries.component';
 import { CustomerRateComponent } from './pages/customer-rate/customer-rate/customer-rate.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PasswordResetOtpComponent } from './authentication/reset-password-otp/password-reset-otp/password-reset-otp.component';
+import { NewPasswordComponent } from './authentication/new-password/new-password/new-password.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,7 +46,9 @@ import { CustomerRateComponent } from './pages/customer-rate/customer-rate/custo
     PaymentSuccessComponent, TrackOrderComponent, BuildPizzaComponent, SuccessAddToCardComponent, 
     AddCardComponent,ViewOrderDetailsComponent,NotificationsComponent,AdminHomeComponent,RoleHomeComponent,
     ManageOrdersComponent, ManageMenuComponent,AddPizzaModalComponent,PizzaAddedSuccessComponent,RevenueComponent, 
-    ManageCustomersComponent, ViewCustomerComponent, DeliveriesComponent, CustomerRateComponent],
+    ManageCustomersComponent, ViewCustomerComponent, DeliveriesComponent, CustomerRateComponent, HttpClientModule, 
+    NewPasswordComponent, PasswordResetOtpComponent
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

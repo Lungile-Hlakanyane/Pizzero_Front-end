@@ -1,28 +1,37 @@
 <ion-content class="ion-padding">
   <div class="center">
-    <h1 class="title" style="font-weight: bold;">Welcome Lungile</h1>
+    <h1 class="title" style="font-weight: bold;">Welcome</h1>
   </div>
   <div class="intro" style="text-align: center; align-items: center; justify-content:center;">
     <p class="text-intro" style="color:grey">
       Sign In to Pizzaro
     <p>
   </div>
-
-  <ion-item>
-    <ion-select aria-label="Select Role" [(ngModel)]="selectedRole">
-      <ion-select-option value="customer">Customer</ion-select-option>
-      <ion-select-option value="admin">Admin/Store Manager</ion-select-option>
-    </ion-select>
-  </ion-item>
    
  <div class="input-form">
   <form>
     <ion-item>
-      <ion-input label="EMAIL" labelPlacement="floating" placeholder="EMAIL"></ion-input>
+      <ion-input
+        label="EMAIL"
+        labelPlacement="floating"
+        placeholder="EMAIL"
+        [(ngModel)]="email"
+        name="email"
+        type="email"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="PASSWORD" labelPlacement="floating" placeholder="PASSWORD"></ion-input>
+      <ion-input
+        label="PASSWORD"
+        labelPlacement="floating"
+        placeholder="PASSWORD"
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+        required
+      ></ion-input>
     </ion-item>
     <P style="color:orange; font-size:15px;" (click)="forgotPassword()">Forgot password?<P>
 

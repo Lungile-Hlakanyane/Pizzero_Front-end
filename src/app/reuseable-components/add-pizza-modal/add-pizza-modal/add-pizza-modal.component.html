@@ -1,125 +1,153 @@
 <ion-content class="ion-padding" id="border-success-card">
-  
   <div class="border-success-card">
-
     <div class="header">
-      <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
-        <h1 class="title" style="color:orange; font-weight: bold;">Add Pizza<br></h1>
+      <div
+        class="align-horizontal"
+        style="display: flex; align-items: space-between; justify-content: space-between;">
+        <h1 class="title" style="color: orange; font-weight: bold;">
+          {{ isEdit ? 'Edit Pizza' : 'Add Pizza' }}
+        </h1>
         <ion-buttons slot="end" (click)="dismiss()">
           <ion-icon name="close">Close</ion-icon>
         </ion-buttons>
       </div>
     </div>
-  
-    <div class="inputs-pizza-infor">
 
+    <div class="inputs-pizza-infor">
+      <!-- Pizza Name -->
       <ion-item>
         <ion-input
           label="Name"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Name"
-          value="Pestoro Pizza">
-        </ion-input>
+          [(ngModel)]="pizza.name"
+        ></ion-input>
       </ion-item>
 
+      <!-- Pizza Size -->
       <ion-item>
-        <ion-select label="Size" label-placement="floating">
+        <ion-select
+          label="Size"
+          label-placement="floating"
+          [(ngModel)]="pizza.size"
+        >
           <ion-select-option value="small">Small</ion-select-option>
           <ion-select-option value="medium">Medium</ion-select-option>
           <ion-select-option value="large">Large</ion-select-option>
         </ion-select>
       </ion-item>
 
+      <!-- Description -->
       <ion-item>
         <ion-input
           label="Description"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Description"
-          value="Enter text here...">
-        </ion-input>
+          [(ngModel)]="pizza.description"
+        ></ion-input>
       </ion-item>
 
+      <!-- Category -->
       <ion-item>
-        <ion-select label="Category" label-placement="floating">
+        <ion-select
+          label="Category"
+          label-placement="floating"
+          [(ngModel)]="pizza.category"
+        >
           <ion-select-option value="veg">Vegetables</ion-select-option>
           <ion-select-option value="non-vegetables">Non-Vegetables</ion-select-option>
           <ion-select-option value="specials">Specials</ion-select-option>
         </ion-select>
       </ion-item>
 
+      <!-- Crust Type -->
       <ion-item>
-        <ion-select label="Crust Type" label-placement="floating">
+        <ion-select
+          label="Crust Type"
+          label-placement="floating"
+          [(ngModel)]="pizza.crustType"
+        >
           <ion-select-option value="thin">Thin</ion-select-option>
           <ion-select-option value="pan">Pan</ion-select-option>
           <ion-select-option value="stuffed">Stuffed</ion-select-option>
         </ion-select>
       </ion-item>
 
+      <!-- Toppings -->
       <ion-item>
         <ion-input
           label="Toppings"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Toppings"
-          value="Provide list of Toppings here...">
-        </ion-input>
+          [(ngModel)]="pizza.toppings"
+        ></ion-input>
       </ion-item>
 
+      <!-- Price -->
       <ion-item>
         <ion-input
           label="Price"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Price"
-          value="R0.00">
-        </ion-input>
+          [(ngModel)]="pizza.price"
+          type="number"
+        ></ion-input>
       </ion-item>
 
+      <!-- Discount -->
       <ion-item>
         <ion-input
           label="Discount"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Discount"
-          value="0%">
-        </ion-input>
+          [(ngModel)]="pizza.discount"
+        ></ion-input>
       </ion-item>
 
+      <!-- Status -->
       <ion-item>
         <ion-input
           label="Status"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Status"
-          value="Available">
-        </ion-input>
+          [(ngModel)]="pizza.status"
+        ></ion-input>
       </ion-item>
 
+      <!-- Ingredients -->
       <ion-item>
         <ion-input
           label="Ingredients"
           labelPlacement="stacked"
           [clearInput]="true"
           placeholder="Ingredients"
-          value="Enter text here...">
-        </ion-input>
+          [(ngModel)]="pizza.ingredients"
+        ></ion-input>
       </ion-item>
 
+      <!-- Pizza Picture -->
       <ion-item>
         <ion-label position="stacked">Upload Pizza Picture</ion-label>
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+        />
       </ion-item>
-
     </div>
-  
-    <div class="action-btn-container" style="display: flex; gap:10px;">
-      <ion-button expand="block" class="custom-btn" (click)="save()">
-        Save
+
+    <div
+      class="action-btn-container"
+      style="display: flex; gap: 10px;">
+      <ion-button expand="block" (click)="save()" class="custom-btn">
+        {{ isEdit ? 'Update' : 'Save' }}
       </ion-button>
     </div>
-
   </div>
-
 </ion-content>

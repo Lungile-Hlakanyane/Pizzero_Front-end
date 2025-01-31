@@ -1,0 +1,22 @@
+export class UserDTO{
+    id: number;
+    email: string;
+    role: string;
+    
+    constructor(id: number, email: string, role: string) {
+        this.id = id;
+        this.email = email;
+        this.role = role;
+    }
+}
+
+export interface User{
+  fullName?: any;
+  email?: string;
+  phoneNumber?: string;
+  dateOfBirth?: string;
+  region?: string;
+  physicalAddress?: string;
+  language?: string;
+  profileImage?: string;
+}

@@ -5,14 +5,19 @@ import { Router } from '@angular/router';
 import { ActionSheetController, AlertController, ToastController, LoadingController  } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { AddPizzaModalComponent } from 'src/app/reuseable-components/add-pizza-modal/add-pizza-modal/add-pizza-modal.component';
+import { PizzaService } from 'src/app/service/pizza-service/pizza.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-menu',
   templateUrl: './manage-menu.component.html',
   styleUrls: ['./manage-menu.component.scss'],
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class ManageMenuComponent  implements OnInit {
+  pizzas: any[] = [];
+  filteredPizzas: any[] = [];
+  searchQuery: string = '';
 
   constructor(
     private router:Router,
@@ -20,48 +25,67 @@ export class ManageMenuComponent  implements OnInit {
     private modalController:ModalController,
     private alertController:AlertController,
     private toastController:ToastController,
-    private loadingController:LoadingController
+    private loadingController:LoadingController,
+    private pizzaService:PizzaService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadPizzas();
+    this.pizzas = this.pizzas.map(pizza => ({
+      ...pizza,
+      ingredients: typeof pizza.ingredients === 'string' ? pizza.ingredients.split(',') : pizza.ingredients
+    }));
+  }
 
   goBack(){
     this.router.navigateByUrl('/admin-home');
   }
 
-  async presentActionSheet() {
+  async presentActionSheet(pizzaId: number) {
+    const selectedPizza = this.pizzas.find((pizza) => pizza.id === pizzaId);
     const actionSheet = await this.actionSheetController.create({
       header: 'Actions',
-      buttons: [{
-        text: 'Edit',
-        icon: 'pencil',
-        handler: () => {
-          this.edit();
-        }
-      }, {
-        text: 'Delete',
-        icon: 'trash',
-        handler: () => {
-          this.delete();
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
+      buttons: [
+        {
+          text: 'Edit',
+          icon: 'pencil',
+          handler: () => {
+            this.edit(selectedPizza);
+          },
+        },
+        {
+          text: 'Delete',
+          icon: 'trash',
+          handler: () => {
+            this.delete(pizzaId);
+          },
+        },
+        {
+          text: 'Cancel',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          },
+        },
+      ],
     });
     await actionSheet.present();
   }
-
-  async edit() {
-  //  implementation here
-  } 
+  
+  
+  async edit(pizza: any) {
+    const modal = await this.modalController.create({
+      component: AddPizzaModalComponent,
+      componentProps: { 
+        isEdit: true, 
+        pizzaData: pizza 
+      },
+    });
+    await modal.present();
+  }
       
-
-  async delete() {
+  async delete(pizzaId: number) {
     // Step 1: Present an alert to confirm deletion
     const alert = await this.alertController.create({
       header: 'Confirm Deletion',
@@ -72,7 +96,7 @@ export class ManageMenuComponent  implements OnInit {
           role: 'cancel',
           handler: () => {
             console.log('Deletion cancelled');
-          }
+          },
         },
         {
           text: 'Yes',
@@ -80,33 +104,52 @@ export class ManageMenuComponent  implements OnInit {
             // Step 2: Show loading spinner with message "Deleting..."
             const loading = await this.loadingController.create({
               message: 'Deleting...',
-              duration: 2000 // Spinner will last 2 seconds
             });
             await loading.present();
   
-            // Simulate the delete operation (e.g., backend API call)
-            setTimeout(async () => {
-              // Step 3: Dismiss the loading spinner
-              await loading.dismiss();
+            // Step 3: Call the deletePizza service
+            this.pizzaService.deletePizza(pizzaId).subscribe({
+              next: async () => {
+                // Step 4: Remove the pizza from the local list
+                this.pizzas = this.pizzas.filter((pizza) => pizza.id !== pizzaId);
   
-              // Step 4: Show success toast
-              const toast = await this.toastController.create({
-                message: 'Item successfully deleted',
-                duration: 2000,
-                color: 'success',
-                position:'top'
-              });
-              await toast.present();
-            }, 2000); // Matches the loading spinner duration
-          }
-        }
-      ]
+                // Dismiss the loading spinner
+                await loading.dismiss();
+  
+                // Step 5: Show success toast
+                const toast = await this.toastController.create({
+                  message: 'Pizza successfully deleted',
+                  duration: 2000,
+                  color: 'success',
+                  position: 'top',
+                });
+                await toast.present();
+              },
+              error: async (error) => {
+                console.error('Error deleting pizza:', error);
+  
+                // Dismiss the loading spinner
+                await loading.dismiss();
+  
+                // Step 6: Show error toast
+                const toast = await this.toastController.create({
+                  message: 'Failed to delete pizza',
+                  duration: 2000,
+                  color: 'danger',
+                  position: 'top',
+                });
+                await toast.present();
+              },
+            });
+          },
+        },
+      ],
     });
   
     await alert.present();
   }
   
-
+  
   async addPizza(){
     const modal = await this.modalController.create({
       component: AddPizzaModalComponent,
@@ -115,6 +158,31 @@ export class ManageMenuComponent  implements OnInit {
       componentProps: {  },
     });
     await modal.present();
+  }
+
+  loadPizzas() {
+    this.pizzaService.getAllPizzas().subscribe(
+      (data) => {
+        this.pizzas = data.map(pizza => ({
+          ...pizza,
+          ingredients: typeof pizza.ingredients === 'string' ? pizza.ingredients.split(',') : pizza.ingredients
+        }));
+        this.filteredPizzas = [...this.pizzas];
+      },
+      (error) => {
+        console.error('Error fetching pizzas:', error);
+      }
+    );
+  }
+
+  filterPizzas() {
+    if (!this.searchQuery) {
+      this.filteredPizzas = [...this.pizzas];
+    } else {
+      this.filteredPizzas = this.pizzas.filter(pizza =>
+        pizza.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   }
 
 }

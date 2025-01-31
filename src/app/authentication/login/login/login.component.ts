@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { LoadingController,ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
+import { LoginService } from 'src/app/service/login-service/login.service';
+import { UserDTO } from 'src/app/models/User';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +15,14 @@ import { Preferences } from '@capacitor/preferences';
   imports:[IonicModule, FormsModule]
 })
 export class LoginComponent  implements OnInit {
+  email: string = '';
+  password: string = '';
 
   constructor(
     private loadingController:LoadingController,
     private toastController:ToastController,
-    private router:Router
+    private router:Router,
+    private loginService:LoginService
   ) { }
 
   ngOnInit() {}
@@ -30,21 +35,58 @@ export class LoginComponent  implements OnInit {
     this.router.navigate(['/forgot-password'])
   }
 
-  selectedRole: string = 'customer'; // Default value
-
+  
   async login() {
-    const userRole = this.selectedRole;
+    const loading = await this.loadingController.create({
+      message: 'Logging in...',
+    });
+    await loading.present();
   
-    // Save the role to Capacitor Preferences
-    await Preferences.set({ key: 'user', value: JSON.stringify({ role: userRole }) });
+    this.loginService.login(this.email, this.password).subscribe(
+      async (response: UserDTO) => {
+        await loading.dismiss();
   
-    if (userRole === 'admin') {
-      this.router.navigateByUrl('/admin-home'); // Navigate to Admin Home
-    } else if (userRole === 'customer') {
-      this.router.navigateByUrl('/home'); // Navigate to default Home
-    } else {
-      console.error('Invalid role selected');
-    }
+        if (!response || !response.role || !response.id) { 
+          this.showToast('Login failed. User not found or role missing!');
+          return;
+        }
+  
+        // Store user details including user ID in local storage
+        await Preferences.set({
+          key: 'user',
+          value: JSON.stringify({ 
+            id: response.id,  // Store user ID
+            role: response.role, 
+            email: response.email 
+          }),
+        });
+  
+        // Navigate based on user role
+        console.log('User Logged In:', response);
+        if (response.role === 'admin') {
+          this.router.navigate(['/admin-home'], { queryParams: { email: this.email } });
+        } else if (response.role === 'customer') {
+          this.router.navigate(['/home'], { queryParams: { email: this.email } });
+        } else {
+          this.showToast('Invalid role!');
+        }
+      },
+      async (error) => {
+        await loading.dismiss();
+        console.error('Login failed:', error);
+        this.showToast('Login failed. Please check your credentials!');
+      }
+    );
+  }
+  
+  
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000,
+      position: 'top',
+    });
+    await toast.present();
   }
   
 }

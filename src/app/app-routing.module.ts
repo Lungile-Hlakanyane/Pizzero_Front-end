@@ -22,6 +22,8 @@ import { RevenueComponent } from './pages/revenue/revenue/revenue.component';
 import { ManageCustomersComponent } from './pages/manage-customers/manage-customers/manage-customers.component';
 import { ViewCustomerComponent } from './pages/view-customer/view-customer/view-customer.component';
 import { DeliveriesComponent } from './pages/deliveries/deliveries/deliveries.component';
+import { PasswordResetOtpComponent } from './authentication/reset-password-otp/password-reset-otp/password-reset-otp.component';
+import { NewPasswordComponent } from './authentication/new-password/new-password/new-password.component';
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'view-order-details',component:ViewOrderDetailsComponent},
   { path: 'notifications', component:NotificationsComponent},
   { path: 'view-customer', component:ViewCustomerComponent},
+  { path: 'password-reset-otp',component:PasswordResetOtpComponent},
+  { path: 'new-password',component:NewPasswordComponent},
   {
     path: '',
     component: TabsComponent,

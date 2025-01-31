@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { LoadingController,ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { RegisterService } from 'src/app/service/register-service/register.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,10 +14,17 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent  implements OnInit {
 
+  fullName: string = '';
+  email: string = '';
+  password: string = '';
+  phoneNumber: string = '';
+  physicalAddress: string = '';
+
   constructor(
     private loadingController:LoadingController,
     private toastController:ToastController,
-    private router:Router
+    private router:Router,
+    private registerService:RegisterService
   ) { }
 
   ngOnInit() {}
@@ -24,28 +32,48 @@ export class SignUpComponent  implements OnInit {
   signUp() {
     // Step 1: Show the loading spinner with 'Loading...' text
     this.loadingController.create({
-      message: 'Loading...',  // Loading message   // Optional: spinner style (other options available)
+      message: 'Loading...',
     }).then(loading => {
       loading.present(); // Show the loading spinner
   
-      // Step 2: Simulate a delay (e.g., network request, processing, etc.)
-      setTimeout(() => {
-        // Step 3: Dismiss the loading spinner
-        loading.dismiss();
+      // Step 2: Call the register service
+      const userData = {
+        fullName: this.fullName,
+        email: this.email,
+        password: this.password,
+        phoneNumber: this.phoneNumber,
+        physicalAddress: this.physicalAddress
+      };
   
-        // Step 4: Show a success toast
-        this.toastController.create({
-          message: 'Account Created successfully, OTP sent to your email',  // Success message
-          duration: 2000,                          // Duration of toast (in milliseconds)
-          position: 'top',       
-          color:'success'                  // Position of the toast (can be 'top', 'bottom', 'middle')
-        }).then(toast => {
-          toast.present(); // Show the toast
-        });
-  
-        // Step 5: Navigate to the login page
-        this.router.navigate(['/otp']);
-      }, 3000); // Simulate a delay of 3 seconds (adjust this based on your real logic)
+      this.registerService.registerUser(userData).subscribe(
+        (response: any) => {
+            loading.dismiss();
+            console.log('User registered successfully:', response);
+            this.toastController.create({
+                message: response,
+                duration: 2000,
+                position: 'top',
+                color: 'success',
+            }).then(toast => {
+                toast.present();
+            });
+            this.router.navigate(['/otp'], {
+              queryParams: {email: this.email},
+            });
+        },
+        (error) => {
+            loading.dismiss();
+            console.error('There was an error during the registration process:', error);
+            this.toastController.create({
+                message: error.error.message || 'Error registering user. Please try again!',
+                duration: 2000,
+                position: 'top',
+                color: 'danger',
+            }).then(toast => {
+                toast.present();
+            });
+        }
+     );
     });
   }
 
@@ -53,5 +81,4 @@ export class SignUpComponent  implements OnInit {
     this.router.navigate(['/login']);
   }
   
-
 }

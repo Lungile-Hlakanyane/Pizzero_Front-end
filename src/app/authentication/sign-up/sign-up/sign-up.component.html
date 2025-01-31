@@ -5,56 +5,58 @@
   <div class="intro" style="text-align: center; align-items: center; justify-content:center;">
     <p class="text-intro" style="color:grey">
       We have a wide range of Pizza flavors to select from and have them delivered within 24 hours
-    <p>
-  </div>
- 
- <div class="input-form">
-  <form>
-    <ion-item>
-      <ion-input label="FULL NAME" labelPlacement="floating" placeholder="FULL NAME"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="EMAIL" labelPlacement="floating" placeholder="EMAIL"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="PASSWORD" labelPlacement="floating" placeholder="PASSWORD"></ion-input>
-    </ion-item>
-    <P STYLE="color:grey; font-size:10px;">Minimum of 8 characteres<P>
-
-   <div class="action-btn">
-    <ion-button expand="block" class="custom-btn" (click)="signUp()">
-      Sign Up
-    </ion-button>
-    <br>
-    
-   </div>
-
-   <div class="or" style="text-align: center; align-items: center; justify-content: center;">
-    <p style="color:grey;">OR</p>
-   </div>
-
-   <div class="google-btn">
-    <img src="../../../../assets/icon/google_img_icon.png">
-    <p style="color:grey; font-size: 18px;position: relative;bottom:7px;">Continue With Google</p>
-   </div>
-   
-  </form>
-
-  <div class="account-exists">
-    <p style="color:grey; font-size: 14px;" (click)="justLogIn()">Alraedy have an account? 
-      <ion-nav-link style="color: orange;">Sign In</ion-nav-link></p>
+    </p>
   </div>
 
-  <div class="terms" style="position: relative;top:90px;">
-    <ion-checkbox><p style="color:orange">I agree to the terms and conditions</p></ion-checkbox>
-    <p style="color:grey; font-size: 11px;">This app is protected by reCAPTCHA and Google Privacy Policy and Terms of Service apply.</p>
+  <div class="input-form">
+    <form (ngSubmit)="signUp()">
+      <ion-item>
+        <ion-input [(ngModel)]="fullName" name="fullName" label="FULL NAME" labelPlacement="floating" placeholder="FULL NAME" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="email" name="email" label="EMAIL" labelPlacement="floating" placeholder="EMAIL" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="phoneNumber" name="phoneNumber" label="PHONE NUMBER" labelPlacement="floating" placeholder="PHONE NUMBER" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="physicalAddress" name="physicalAddress" label="PHYSICAL ADDRESS" labelPlacement="floating" placeholder="PHYSICAL ADDRESS" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="password" name="password" label="PASSWORD" labelPlacement="floating" placeholder="PASSWORD" type="password" required></ion-input>
+      </ion-item>
+      <p style="color:grey; font-size:10px;">Minimum of 8 characters</p>
+
+      <div class="action-btn">
+        <ion-button type="submit" expand="block" class="custom-btn">
+          Sign Up
+        </ion-button>
+        <br>
+      </div>
+
+      <div class="or" style="text-align: center; align-items: center; justify-content: center;">
+        <p style="color:grey;">OR</p>
+      </div>
+
+      <div class="google-btn">
+        <img src="../../../../assets/icon/google_img_icon.png">
+        <p style="color:grey; font-size: 18px;position: relative;bottom:7px;">Continue With Google</p>
+      </div>
+
+    </form>
+
+    <div class="account-exists">
+      <p style="color:grey; font-size: 14px;" (click)="justLogIn()">Already have an account? 
+        <ion-nav-link style="color: orange;">Sign In</ion-nav-link></p>
+    </div>
+
+    <div class="terms" style="position: relative;top:90px;">
+      <ion-checkbox><p style="color:orange">I agree to the terms and conditions</p></ion-checkbox>
+      <p style="color:grey; font-size: 11px;">This app is protected by reCAPTCHA and Google Privacy Policy and Terms of Service apply.</p>
+    </div>
   </div>
-
-  
- </div>
-
- 
-  
 </ion-content>

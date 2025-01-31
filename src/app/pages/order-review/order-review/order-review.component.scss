@@ -140,3 +140,37 @@ ion-item{
     height:85px;
 }
   
+// SLIDER EFFECT
+.deals-slider {
+    overflow: hidden; /* Hide overflowing content */
+    width: 100%; /* Full width of the container */
+    position: relative;
+  }
+  
+  .deals-card {
+    display: flex;
+    gap: 10px;
+    animation: slide-infinite 5s linear infinite; /* Smooth infinite scrolling */
+  }
+  
+  @keyframes slide-infinite {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .pizza-deal-card {
+    flex: 0 0 auto; /* Ensure elements stay side by side */
+  }
+  
+  .pizza-deal-card img {
+    border: 1px solid;
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+  }
+
+//END SLIDER EFFECT

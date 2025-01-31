@@ -1,21 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicModule, IonInput } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { LoadingController,ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { LoadingController, ToastController,  } from '@ionic/angular';
+import { Route, Router } from '@angular/router';
 import { OtpServiceService } from 'src/app/service/otp-service/otp-service.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-otp',
-  templateUrl: './otp.component.html',
-  styleUrls: ['./otp.component.scss'],
-  standalone:true,
-  imports:[IonicModule, FormsModule,CommonModule,ReactiveFormsModule]
+  selector: 'app-password-reset-otp',
+  templateUrl: './password-reset-otp.component.html',
+  styleUrls: ['./password-reset-otp.component.scss'],
+  imports: [IonicModule, FormsModule],
+  standalone: true
 })
-export class OtpComponent  implements OnInit {
+export class PasswordResetOtpComponent  implements OnInit {
   @ViewChild('box1', { static: false }) box1!: IonInput;
   @ViewChild('box2', { static: false }) box2!: IonInput;
   @ViewChild('box3', { static: false }) box3!: IonInput;
@@ -40,6 +38,27 @@ export class OtpComponent  implements OnInit {
     this.setUserRole('customer');
   }
 
+  onInputChange(event: Event, nextInput: IonInput | null) {
+    const input = event.target as HTMLInputElement;
+    const inputValue = input.value;
+  
+    if (typeof inputValue !== 'string' || !/^\d+$/.test(inputValue)) {
+      input.value = '';
+      return;
+    }
+  
+    if (inputValue && nextInput) {
+      nextInput.setFocus();
+    } else if (!nextInput) {
+      this.onSubmit();
+    }
+  }
+
+  setUserRole(role:string){
+    this.userRole = role;
+    console.log(`User role set to ${this.userRole}`);
+  }
+
   async onSubmit() {
     this.otp = `${this.box1.value}${this.box2.value}${this.box3.value}${this.box4.value}`;
     const loading = await this.loadingController.create({
@@ -57,7 +76,9 @@ export class OtpComponent  implements OnInit {
           color: 'success',
         });
         await toast.present();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/new-password'],{
+          queryParams: {email: this.email},
+        });
       },
       async (error) => {
         await loading.dismiss();
@@ -77,7 +98,6 @@ export class OtpComponent  implements OnInit {
       message: 'Loading...',
     });
   
-    // Present the loading controller
     await loading.present();
     this.otpService.resendOtp(this.email).subscribe(
       async (response) => {
@@ -108,27 +128,4 @@ export class OtpComponent  implements OnInit {
     );
   }
   
-
-  onInputChange(event: Event, nextInput: IonInput | null) {
-    const input = event.target as HTMLInputElement;
-    const inputValue = input.value;
-  
-    if (typeof inputValue !== 'string' || !/^\d+$/.test(inputValue)) {
-      input.value = '';
-      return;
-    }
-  
-    if (inputValue && nextInput) {
-      nextInput.setFocus();
-    } else if (!nextInput) {
-      this.onSubmit();
-    }
-  }
-
-  setUserRole(role:string){
-    this.userRole = role;
-    console.log(`User role set to ${this.userRole}`);
-  }
-
-
 }

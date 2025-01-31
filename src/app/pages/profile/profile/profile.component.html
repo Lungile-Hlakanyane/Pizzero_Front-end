@@ -1,91 +1,68 @@
 <ion-content class="ion-padding">
-
   <div class="header">
-    <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
-      <h1 class="title" style="color:orange; font-weight: bold;">Profile<br></h1>
-      <ion-buttons slot="end">
-        <ion-icon name="heart-outline"></ion-icon>
-      </ion-buttons>
+    <div class="align-horizontal" style="display: flex; justify-content: space-between;">
+      <h1 class="title" style="color:orange; font-weight: bold;">Profile</h1>
     </div>
   </div>
 
   <div class="profile-card">
-
     <p style="color:grey; font-weight: bold;">Account Overview</p>
-
     <div class="user-info-card" style="display: flex; gap:10px;">
       <div>
         <img src="../../../../assets/avatar.png" style="width: 80px; height:65px;">
       </div>
       <div>
-        <p style="color:grey; font-size: 12px;">You Profile photo will appear on devices that use your Pizzero account.</p>
+        <p style="color:grey; font-size: 12px;">Your Profile photo will appear on devices that use your Pizzero account.</p>
         <ion-button expand="block" class="custom-btn" (click)="presentActionSheet()">CHANGE PHOTO</ion-button>
       </div>
     </div>
-
     <hr class="horizontal-line">
-
-    <div class="user-card-data" style="display: flex; justify-content: space-between; padding-left: 10px; padding-right: 10px;">
-      <ion-input label="FULL NAME" labelPlacement="floating" placeholder="lungile halakanyane"></ion-input>
-      <p style="color:orange; font-size: 25px; position:relative;bottom:9px;">
-        <ion-icon name="pencil-outline"></ion-icon>
-      </p>
-    </div>
-    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
-  <div class="profile-card" style="position: relative; top:15px;">
+  <div class="profile-card" style="margin-top: 15px;">
     <ion-grid>
       <ion-row>
-        <ion-col><p style="color:#000;font-weight: bold;">Profile Info</p></ion-col>
-        <ion-col><p style="color:orange;font-weight:100; text-align: end;">Edit Profile Info</p></ion-col>
+        <ion-col><p class="section-title">Profile Info</p></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">DATE OF BIRTH</p></ion-col>
-        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
+        <ion-col><ion-input label="FULL NAME" labelPlacement="floating" [(ngModel)]="userData.fullName"></ion-input></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">REGION</p></ion-col>
-        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
+        <ion-col><ion-input label="DATE OF BIRTH" labelPlacement="floating" [(ngModel)]="userData.dateOfBirth"></ion-input></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">ADDRESS</p></ion-col>
-        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
+        <ion-col><ion-input label="REGION" labelPlacement="floating" [(ngModel)]="userData.region"></ion-input></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-input label="ADDRESS" labelPlacement="floating" [(ngModel)]="userData.physicalAddress"></ion-input></ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
-  <div class="profile-card" style="position: relative; top:35px;">
+  <div class="profile-card" style="margin-top: 15px;">
     <ion-grid>
       <ion-row>
-        <ion-col><p style="color:#000;font-weight: bold;">Account Info</p></ion-col>
-        <ion-col><p style="color:orange;font-weight:100; text-align: end;">Edit Account Info</p></ion-col>
+        <ion-col><p class="section-title">Account Info</p></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">Email</p></ion-col>
-        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
+        <ion-col><ion-input label="EMAIL" labelPlacement="floating" [(ngModel)]="userData.email" [disabled]="true"></ion-input></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">PHONE</p></ion-col>
-        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
+        <ion-col><ion-input label="PHONE NUMBER" labelPlacement="floating" [(ngModel)]="userData.phoneNumber"></ion-input></ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
-  <div class="profile-card" style="position: relative; top:55px;">
+  <div class="profile-card" style="margin-top: 15px;">
     <ion-grid>
       <ion-row>
-        <ion-col><p style="color:#000;font-weight: bold;">Language Info</p></ion-col>
-        <ion-col><p style="color:orange;font-weight:100; text-align: end;">Edit Language Info</p></ion-col>
+        <ion-col><p class="section-title">Language Info</p></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><p style="color:grey;font-weight: 100;">LANGUAGE</p></ion-col>
-        <ion-col> <ion-input labelPlacement="floating"></ion-input></ion-col>
+        <ion-col><ion-input label="LANGUAGE" labelPlacement="floating" [(ngModel)]="userData.language"></ion-input></ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button expand="block" class="custom-btn">SAVE</ion-button>
   </div>
 
+  <ion-button expand="block" class="custom-btn" style="margin-top: 20px;" (click)="updateUserProfile()">SAVE</ion-button>
 </ion-content>
