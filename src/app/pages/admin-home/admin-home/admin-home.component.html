@@ -75,15 +75,15 @@
         <ion-col style="align-items: start;">
           <div class="card" (click)="navigate('/manage-customers')">
             <p style="color:orange; font-weight:bold; font-size:20px;">Customers</p>
-            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">New: 24</p>
-            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Most Active: 678</p>
-            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Total Users: 1000</p>
+            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">New Customers: {{ customerCount }}</p>
+            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Most Active: {{ customerCount }}</p>
+            <p style="color:orange; font-weight:100; font-size:10px; line-height: 1px; position: relative; bottom: 15px;">Total Users: {{ customerCount }}</p>
           </div>
         </ion-col>
         <ion-col style="align-items:end; justify-content: end; text-align: end;">
           <div class="card" (click)="navigate('/manage-menu')">
             <p style="color:orange; font-weight:100; font-size:14px;">Items on Menu</p>
-            <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 10px;">Total: 14</p>
+            <p style="color:orange; font-weight:bold; font-size:26px; line-height: 1px; position: relative; bottom: 10px;">Total: {{totalPizzas}}</p>
           </div>
         </ion-col>
       </ion-row>

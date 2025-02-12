@@ -9,20 +9,23 @@
   <div class="total-orders">
     <ion-item lines="none" style="display: flex; gap:20px;">
       <p style="color:orange; font-size: 20px; font-weight: bold;"><ion-icon name="bag-handle-outline"></ion-icon></p>
-      <p style="color:orange; font-weight: bold; position: relative; left:15px;">You have {{ totalItems }} items in your list cart</p>
+    <p style="color:orange; font-weight: bold; position: relative; left:15px;">
+  You have {{ totalItems }} items in your list cart
+</p>
     </ion-item>
   </div>
 
   <div *ngFor="let pizza of pizzas" class="pizza-card">
     <div class="img">
-      <img [src]="pizza.image" alt="{{ pizza.name }}" style="width:45px; height:45px;">
+      <img src="../../../../assets/pizza_02.JPG" alt="{{ pizza.name }}" style="width:45px; height:45px;">
     </div>
     <div class="pizza-info">
       <p style="font-size:16px; font-weight: bold; color:#000; line-height: 1px;">{{ pizza.name }}</p>
-      <p style="color:grey; font-size: 14px; font-weight:100; line-height: 1px;">Calories {{ pizza.calories }}</p>
+      <p style="color:grey; font-size: 14px; font-weight:100; line-height: 1px;">Size {{ pizza.size }}</p>
+      <p style="color:grey; font-size: 10px; font-weight:100; line-height: 1px; font-style:italic;">Ingredients {{ pizza.ingredients }}</p>
       <div style="display: flex; justify-content: space-between;">
         <div>
-          <p style="color:#000; font-weight: bold; font-size:20px;line-height: 1px;">R{{ pizza.price.toFixed(2) }}</p>
+          <p style="color:#000; font-weight: bold; font-size:20px;line-height: 1px;">R{{ pizza.price }}</p>
         </div>
         <div style="display: flex; gap:10px; text-align: end; align-items: end; position: relative; left:90px; bottom:10px;">
           <p style="font-size: 20px;" (click)="increaseQuantity(pizza)">
@@ -36,7 +39,6 @@
       </div>
     </div>
   </div>
-  
   
   <div class="amount-container" style="position: relative; top:30px;">
     <ion-grid>
@@ -53,7 +55,7 @@
           <p style="color:grey; font-weight: bold;">Discounts</p>
         </ion-col>
         <ion-col style="text-align: end; align-items: end;">
-          <p style="color:#000; font-weight: bold;">R{{ discounts.toFixed(2) }}</p>
+          <p style="color:#000; font-weight: bold;">R{{ discounts }}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -61,7 +63,7 @@
           <p style="color:grey; font-weight: bold;">Total</p>
         </ion-col>
         <ion-col style="text-align: end; align-items: end;">
-          <p style="color:#000; font-weight: bold;">R{{ totalPrice.toFixed(2) }}</p>
+          <p style="color:#000; font-weight: bold;">R{{ totalPrice }}</p>
         </ion-col>
       </ion-row>
     </ion-grid>

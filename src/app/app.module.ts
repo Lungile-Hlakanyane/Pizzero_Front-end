@@ -37,6 +37,8 @@ import { CustomerRateComponent } from './pages/customer-rate/customer-rate/custo
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordResetOtpComponent } from './authentication/reset-password-otp/password-reset-otp/password-reset-otp.component';
 import { NewPasswordComponent } from './authentication/new-password/new-password/new-password.component';
+import { NewScreenComponent } from './new-screen/new-screen/new-screen.component';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,7 +49,7 @@ import { NewPasswordComponent } from './authentication/new-password/new-password
     AddCardComponent,ViewOrderDetailsComponent,NotificationsComponent,AdminHomeComponent,RoleHomeComponent,
     ManageOrdersComponent, ManageMenuComponent,AddPizzaModalComponent,PizzaAddedSuccessComponent,RevenueComponent, 
     ManageCustomersComponent, ViewCustomerComponent, DeliveriesComponent, CustomerRateComponent, HttpClientModule, 
-    NewPasswordComponent, PasswordResetOtpComponent
+    NewPasswordComponent, PasswordResetOtpComponent, NewScreenComponent
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

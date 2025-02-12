@@ -24,40 +24,44 @@ import { ViewCustomerComponent } from './pages/view-customer/view-customer/view-
 import { DeliveriesComponent } from './pages/deliveries/deliveries/deliveries.component';
 import { PasswordResetOtpComponent } from './authentication/reset-password-otp/password-reset-otp/password-reset-otp.component';
 import { NewPasswordComponent } from './authentication/new-password/new-password/new-password.component';
+import { authGuard } from './service/authguard/guards/auth.guard';
+import { NewScreenComponent } from './new-screen/new-screen/new-screen.component';
 
 const routes: Routes = [
-  { path: 'sign-up', component: SignUpComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'otp', component: OtpComponent },
-  { path: 'order-review', component:OrderReviewComponent},
-  { path: 'track-order', component:TrackOrderComponent},
-  { path: 'view-order-details',component:ViewOrderDetailsComponent},
-  { path: 'notifications', component:NotificationsComponent},
-  { path: 'view-customer', component:ViewCustomerComponent},
-  { path: 'password-reset-otp',component:PasswordResetOtpComponent},
-  { path: 'new-password',component:NewPasswordComponent},
+  { path: 'order-review', component: OrderReviewComponent },
+  { path: 'track-order', component: TrackOrderComponent },
+  { path: 'view-order-details', component: ViewOrderDetailsComponent },
+  { path: 'notifications', component: NotificationsComponent },
+  { path: 'view-customer', component: ViewCustomerComponent },
+  { path: 'password-reset-otp', component: PasswordResetOtpComponent },
+  { path: 'new-password', component: NewPasswordComponent },
+  { path: 'new-screen', component: NewScreenComponent },
   {
     path: '',
     component: TabsComponent,
     children: [
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
-      { path: 'admin-home',component:AdminHomeComponent},
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'my-orders',component:MyOrdersComponent},
-      { path: 'payment-methods',component:PaymentMethodsComponent},
-      { path: 'profile',component:ProfileComponent},
-      { path: 'menu', component:MenuComponent},
-      { path: 'cart', component:CartComponent},
-      { path: 'build-pizza', component:BuildPizzaComponent},
-      { path: 'manage-orders', component:ManageOrdersComponent},
-      { path: 'manage-menu', component:ManageMenuComponent},
-      { path: 'revenue', component:RevenueComponent},
-      { path: 'manage-customers',component:ManageCustomersComponent},
-      { path: 'deliveries', component:DeliveriesComponent}
+      { path: 'admin-home', component: AdminHomeComponent, canActivate: [authGuard] },
+      { path: 'my-orders', component: MyOrdersComponent },
+      { path: 'payment-methods', component: PaymentMethodsComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'menu', component: MenuComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'build-pizza', component: BuildPizzaComponent },
+      { path: 'manage-orders', component: ManageOrdersComponent },
+      { path: 'manage-menu', component: ManageMenuComponent },
+      { path: 'revenue', component: RevenueComponent },
+      { path: 'manage-customers', component: ManageCustomersComponent },
+      { path: 'deliveries', component: DeliveriesComponent }
     ],
   },
 ];
+
 
 @NgModule({
   imports: [

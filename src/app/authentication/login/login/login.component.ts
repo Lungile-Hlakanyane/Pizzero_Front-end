@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
 import { LoginService } from 'src/app/service/login-service/login.service';
 import { UserDTO } from 'src/app/models/User';
+import { AuthService } from 'src/app/service/auth-service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent  implements OnInit {
     private loadingController:LoadingController,
     private toastController:ToastController,
     private router:Router,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private authService:AuthService
   ) { }
 
   ngOnInit() {}
@@ -35,32 +37,30 @@ export class LoginComponent  implements OnInit {
     this.router.navigate(['/forgot-password'])
   }
 
-  
   async login() {
     const loading = await this.loadingController.create({
       message: 'Logging in...',
     });
     await loading.present();
-  
     this.loginService.login(this.email, this.password).subscribe(
       async (response: UserDTO) => {
         await loading.dismiss();
-  
-        if (!response || !response.role || !response.id) { 
+
+        if (!response || !response.role || !response.id) {
           this.showToast('Login failed. User not found or role missing!');
           return;
         }
-  
-        // Store user details including user ID in local storage
+
+        this.authService.login(response); 
         await Preferences.set({
           key: 'user',
-          value: JSON.stringify({ 
-            id: response.id,  // Store user ID
-            role: response.role, 
-            email: response.email 
+          value: JSON.stringify({
+            id: response.id, 
+            role: response.role,
+            email: response.email,
           }),
         });
-  
+
         // Navigate based on user role
         console.log('User Logged In:', response);
         if (response.role === 'admin') {
@@ -78,7 +78,6 @@ export class LoginComponent  implements OnInit {
       }
     );
   }
-  
   
   private async showToast(message: string) {
     const toast = await this.toastController.create({

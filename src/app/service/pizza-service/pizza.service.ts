@@ -16,7 +16,6 @@ export class PizzaService {
     const formData = new FormData();
     formData.append('pizza', JSON.stringify(pizza));
     formData.append('file', file);
-    
     return this.http.post(this.apiUrl, formData, { responseType: 'text' });
   }
   
@@ -44,5 +43,22 @@ export class PizzaService {
   removeFromCart(pizzaId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/removeFromCart/${pizzaId}`, null);
   }
+
+  getCartCount() {
+    return this.http.get<number>(`${this.apiUrl}/cart/count`);
+  }
+  
+  getUserCartCount(userId: number) {
+    return this.http.get<number>(`${this.apiUrl}/cart/count/${userId}`);
+  }
+  
+  getPizzasInCart(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/cart/${userId}`);
+  }
+
+
+ getPizzaById(pizzaId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/${pizzaId}`);
+ }
   
 }

@@ -23,6 +23,10 @@ export class UserService {
   updateUser(userId: number, userData: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${userId}`, userData);
   }
+
+  getCustomerCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/count/customers`);
+  }
   
 
 }
