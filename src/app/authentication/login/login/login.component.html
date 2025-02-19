@@ -20,19 +20,25 @@
         type="email"
         required
       ></ion-input>
-    </ion-item>
 
+    </ion-item>
+    
     <ion-item>
       <ion-input
         label="PASSWORD"
         labelPlacement="floating"
         placeholder="PASSWORD"
-        [(ngModel)]="password"
+        [(ngModel)]="passwordFieldType"
+        [type]="passwordFieldType"
         name="password"
-        type="password"
-        required
-      ></ion-input>
+        required>
+      </ion-input>
+      <ion-button fill="clear" (click)="togglePasswordVisibility()" class="password-toggle">
+        <ion-icon [name]="passwordFieldType === 'password' ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+      </ion-button>
     </ion-item>
+    
+
     <P style="color:orange; font-size:15px;" (click)="forgotPassword()">Forgot password?<P>
 
    <div class="action-btn">

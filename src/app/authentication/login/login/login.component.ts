@@ -17,7 +17,11 @@ import { AuthService } from 'src/app/service/auth-service/auth.service';
 })
 export class LoginComponent  implements OnInit {
   email: string = '';
-  password: string = '';
+  passwordFieldType: string = 'password';
+
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
 
   constructor(
     private loadingController:LoadingController,
@@ -42,7 +46,7 @@ export class LoginComponent  implements OnInit {
       message: 'Logging in...',
     });
     await loading.present();
-    this.loginService.login(this.email, this.password).subscribe(
+    this.loginService.login(this.email, this. passwordFieldType).subscribe(
       async (response: UserDTO) => {
         await loading.dismiss();
 

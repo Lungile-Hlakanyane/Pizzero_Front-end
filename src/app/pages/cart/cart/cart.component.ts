@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { LoadingController,ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { PizzaService } from 'src/app/service/pizza-service/pizza.service';
+import { CheckoutService } from 'src/app/service/checkout-service/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,11 +15,11 @@ import { PizzaService } from 'src/app/service/pizza-service/pizza.service';
   imports: [IonicModule, FormsModule, CommonModule]
 })
 export class CartComponent  implements OnInit {
-
   totalItems: number = 0;
   totalPrice: number = 0;
   discounts: number = 0;
   userId: number = 1;
+  selectedPizza: any = { id: 11 };
 
   pizzas: any = [];
 
@@ -26,7 +27,9 @@ export class CartComponent  implements OnInit {
     private cdr: ChangeDetectorRef,
     private loadingController:LoadingController,
     private router:Router,
-    private pizzaService:PizzaService
+    private pizzaService:PizzaService,
+    private checkoutService:CheckoutService,
+    private toastController:ToastController
   ) { }
 
   ngOnInit() {
@@ -59,10 +62,13 @@ export class CartComponent  implements OnInit {
         console.log('Fetched pizzas:', pizzas);
         const pizzaDetailsPromises = pizzas.map(async (pizza: any) => {
           const pizzaDetails = await this.pizzaService.getPizzaById(pizza.id).toPromise();
-          return { ...pizza, ...pizzaDetails }; 
+          return { 
+            ...pizza, 
+            ...pizzaDetails,
+            quantity: pizza.quantity ?? 1  
+          };
         });
         this.pizzas = await Promise.all(pizzaDetailsPromises);
-        this.totalItems = this.pizzas.length;
         this.calculateTotals();
       },
       (error) => {
@@ -71,17 +77,21 @@ export class CartComponent  implements OnInit {
     );
   }
   
+  
   calculateTotals() {
-    this.totalItems = this.pizzas.reduce((sum: number, pizza: { quantity: number; }) => sum + pizza.quantity, 0);
-    this.totalPrice = this.pizzas.reduce((sum: number, pizza: { price: number; quantity: number; }) => sum + pizza.price * pizza.quantity, 0);
-
-    // Apply discount (example logic, you can adjust based on your needs)
-    this.discounts = this.totalPrice > 100 ? this.totalPrice * 0.1 : 0; // Apply 10% discount for orders over 100
-    this.totalPrice -= this.discounts;
-
+    this.totalItems = this.pizzas.reduce((sum: number, pizza: any) => {
+      const quantity = Number(pizza.quantity) || 0;
+      return sum + quantity;
+    }, 0);
+    this.totalPrice = this.pizzas.reduce((sum: number, pizza: any) => {
+      const price = Number(pizza.price) || 0;
+      const quantity = Number(pizza.quantity) || 0;
+      return sum + price * quantity;
+    }, 0);
+    this.discounts = this.totalPrice > 100 ? this.totalPrice * 0.1 : 0;
+    this.totalPrice = this.totalPrice - this.discounts;
     this.cdr.detectChanges();
-}
-
+  }
   
   increaseQuantity(pizza: any) {
     pizza.quantity++;
@@ -96,18 +106,50 @@ export class CartComponent  implements OnInit {
     }
   }
 
-
-
   async checkout() {
     const loading = await this.loadingController.create({
-      message: 'Loading...',
-      duration: 2000 
+      message: 'Checking out...', 
+      duration: 3000
     });
-
     await loading.present();
-    loading.onDidDismiss().then(() => {
-      this.router.navigate(['/order-review']);
-    });
+    const cartData = {
+      userId: this.userId, 
+      pizzaId: this.selectedPizza?.id ?? this.selectedPizza, 
+      totalItems: this.totalItems,
+      totalPrice: this.totalPrice,
+      discounts: this.discounts
+    };
+    this.checkoutService.addToCart(cartData).subscribe(
+      async () => {
+        await loading.dismiss();
+        this.showToast('Checkout successful!', 'success');
+        this.router.navigate(['/order-review'], {
+          queryParams: { 
+            pizzaId: cartData.pizzaId, 
+            totalItems: cartData.totalItems,
+            totalPrice: cartData.totalPrice,
+            discounts: cartData.discounts 
+          }
+        });
+
+      },
+      async (error) => {
+        await loading.dismiss();
+        this.showToast('Checkout failed. Please try again.', 'danger'); 
+        console.error('Error saving cart:', error);
+      }
+    );
   }
+  
+  async showToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: color,
+      position: 'top' 
+    });
+    toast.present();
+  }
+
 
 }

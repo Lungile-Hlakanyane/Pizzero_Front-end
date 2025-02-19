@@ -43,5 +43,13 @@
     --border-radius: 16px 16px 0 0;
     --margin-top: auto; /* Push modal to the bottom */
     --box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
-  }
+}
+
+.bottom-modal-2 {
+  --width: 100%;
+  --max-height: 270px;
+  --border-radius: 16px 16px 0 0;
+  --margin-top: auto; /* Push modal to the bottom */
+  --box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
   

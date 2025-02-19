@@ -1,47 +1,41 @@
 <ion-content class="ion-padding" id="border-success-card">
-  
   <div class="border-success-card">
-
     <div class="header">
-      <div class="align-horizontal" style="display: flex; align-items: space-between; justify-content: space-between;">
-        <h1 class="title" style="color:orange; font-weight: bold;">Added a new Card<br></h1>
+      <div class="align-horizontal" style="display: flex; justify-content: space-between;">
+        <h1 class="title" style="color: orange; font-weight: bold;">Add a new Card</h1>
         <ion-buttons slot="end" (click)="closeModal()">
           <ion-icon name="close">Close</ion-icon>
         </ion-buttons>
       </div>
     </div>
-  
+
     <div class="center">
-      <p style="color:grey;"> Note: Some payment provides issue a temporary authorization change.</p>
+      <p style="color: grey;">Note: Some payment providers issue a temporary authorization charge.</p>
 
       <ion-item>
-        <ion-input label="Card Number" labelPlacement="floating" placeholder="Card Number"></ion-input>
+        <ion-input [(ngModel)]="card.cardNumber" label="Card Number" labelPlacement="floating" placeholder="Card Number"></ion-input>
       </ion-item>
 
       <div class="flex-input" style="display: flex; justify-content: space-evenly;">
         <ion-item>
-          <ion-input label="Expiration" labelPlacement="floating" placeholder="Expiration"></ion-input>
+          <ion-input [(ngModel)]="card.expirationDate" label="Expiration" labelPlacement="floating" placeholder="MM/YY"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="CVV" labelPlacement="floating" placeholder="CVV"></ion-input>
+          <ion-input [(ngModel)]="card.cvv" label="CVV" labelPlacement="floating" placeholder="CVV"></ion-input>
         </ion-item>
       </div>
 
       <ion-item>
-        <ion-input label="Card Holder Name" labelPlacement="floating" placeholder="Card Hold Name"></ion-input>
+        <ion-input [(ngModel)]="card.cardHolderName" label="Card Holder Name" labelPlacement="floating" placeholder="Card Holder Name"></ion-input>
       </ion-item>
     </div> 
-    <div class="action-btn-container" style="display: flex; gap:10px;">
 
-      <ion-button expand="block" class="custom-btn" (click)="closeModal()">
-        Cancel
-      </ion-button>
-
+    <div class="action-btn-container" style="display: flex; gap: 10px;">
+      <ion-button expand="block" class="custom-btn" (click)="closeModal()">Cancel</ion-button>
       <ion-button expand="block" class="custom-btn" (click)="addCard()">
-        Add new card
+        {{ card.id ? 'Update Card' : 'Add new card' }}
       </ion-button>
-
     </div>
   </div>
-
+  
 </ion-content>

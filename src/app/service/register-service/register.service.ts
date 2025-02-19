@@ -17,6 +17,5 @@ export class RegisterService {
   registerUser(userData: any): Observable<any> {
     return this.httpClient.post(this.apiUrl, userData, { responseType: 'text' });
   }
-  
 
 }

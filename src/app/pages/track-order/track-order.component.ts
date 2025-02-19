@@ -60,13 +60,10 @@ export class TrackOrderComponent  implements OnInit {
 
   async showRatingModal() {
     const modal = await this.modalController.create({
-      component: CustomerRateComponent, // Reference to the modal component
-      cssClass: 'bottom-modal', // Apply the custom CSS class
-      backdropDismiss: true, // Prevent dismissal by tapping outside
+      component: CustomerRateComponent,
+      cssClass: 'bottom-modal-2', 
+      backdropDismiss: true, 
     });
     await modal.present();
   }
-
-  
-
 }

@@ -1,7 +1,5 @@
 <ion-content class="ion-padding">
-
   <div class="header">
-
     <div class="align-horizontal">
       <h1 class="title" style="color:orange; font-weight: bold;">
         <ion-icon name="arrow-back-outline" (click)="goBack()" class="back-icon"></ion-icon> Payment Methods<br>
@@ -11,10 +9,10 @@
     <div class="search-container">
       <ion-item lines="none">
         <ion-icon name="search-outline" slot="start"></ion-icon>
-        <ion-input type="text"placeholder="Search Pizza"></ion-input>
+        <ion-input type="text" placeholder="Search Card" [(ngModel)]="searchQuery" (ionInput)="filterCards()"></ion-input>
       </ion-item>
     </div>
-
+    
     <div class="search-container">
       <ion-item lines="none" (click)="openAddCardModal()">
         <div class="space-add-card" style="display: flex; gap:15px; text-align: center; justify-content: center; align-items: center;">
@@ -30,38 +28,32 @@
 
     <div class="main-content">
 
-      <div class="pizza-cart" style="display: flex; gap:20px; justify-content: space-between;">
-        <div class="img">
-          <img src="../../../../assets/visa_logo.png" style="width:80px; height:80px;">
-        </div>
-        <div class="info" style="position: relative; top:5px;right:50px;">
-          <p style="color:#000; font-weight:bold; line-height: 1px;">Visa Card</p>
-          <p style="color:grey; font-weight:300; line-height: 1px;">Online Transfer</p>
-          <p style="color:orange; font-weight: bold; font-size: 15px; line-height:1px">Secure Payment</p>
-        </div>
-        <div class="add" style="position: relative;">
-          <p style="color:orange;font-size: 30px; font-weight: bold;"><ion-icon name="chevron-forward-outline"></ion-icon></p>
+      <div *ngIf="cards.length > 0; else noCards">
+        <div class="pizza-cart" style="display: flex; gap:20px; justify-content: space-between;" *ngFor="let card of filteredCards">
+          <div class="img">
+            <img src="../../../../assets/visa_logo.png" style="width:80px; height:80px;">
+          </div>
+          <div class="info" style="position: relative; top:5px;right:50px;">
+            <p style="color:#000; font-weight:bold; line-height: 1px;">**** **** **** {{ card.cardNumber.slice(-4) }}</p>
+            <p style="color:grey; font-weight:300; line-height: 1px;">Expires: {{ card.expirationDate }}</p>
+            <p style="color:orange; font-weight: bold; font-size: 15px; line-height:1px">Secure Payment</p>
+          </div>
+          <div class="add" style="position: relative;">
+            <p style="color:orange;font-size: 30px; font-weight: bold;" (click)="presentActionSheet(card)">
+              <ion-icon name="ellipsis-vertical-sharp"></ion-icon>
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="pizza-cart" style="display: flex; gap:20px; justify-content: space-between;">
-        <div class="img">
-          <img src="../../../../assets/mc_symbol_opt_45_2x.png" style="width:80px; height:80px;">
-        </div>
-        <div class="info" style="position: relative; top:5px;right:50px;">
-          <p style="color:#000; font-weight:bold; line-height: 1px;">Master Card</p>
-          <p style="color:grey; font-weight:300; line-height: 1px;">Online Transfer</p>
-          <p style="color:orange; font-weight: bold; font-size: 15px; line-height:1px;" class="secure-text">Secure Payment</p>
-        </div>
-        <div class="add" style="position: relative;">
-          <p style="color:orange;font-size: 30px; font-weight: bold;"><ion-icon name="chevron-forward-outline"></ion-icon></p>
-        </div>
-      </div>
+      <ng-template #noCards>
+        <ion-text color="medium">
+          <p style="text-align:center; margin-top:20px; color:grey; font-style: italic;">No cards added yet.</p>
+        </ion-text>
+      </ng-template>
 
     </div>
 
   </div>
 
-  
- 
 </ion-content>

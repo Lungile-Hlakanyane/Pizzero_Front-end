@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ModalController,LoadingController,ToastController, IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { CardDTO } from 'src/app/models/Card';
+import { CardService } from 'src/app/service/card-service/card.service';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-add-card',
@@ -11,16 +14,39 @@ import { Router } from '@angular/router';
   imports: [IonicModule, FormsModule]
 })
 export class AddCardComponent  implements OnInit {
+  @Input() cardData: CardDTO = { userId: '',cardNumber: '', expirationDate: '', cvv: '', cardHolderName: '' }; 
+
+  card: CardDTO = {
+    cardNumber: '',
+    expirationDate: '',
+    cvv: '',
+    cardHolderName: '',
+    userId: ''
+  };
 
   constructor(
     private modalController:ModalController,
     private loadingController:LoadingController,
     private toastController:ToastController,
-    private router:Router
+    private router:Router,
+    private cardService:CardService
   ) { }
 
-  ngOnInit() {}
-
+  async ngOnInit() {
+    try {
+      const userData = await Preferences.get({ key: 'user' }); 
+      if (userData.value) {
+        const user = JSON.parse(userData.value);
+        console.log('Retrieved User Data:', user); 
+        this.card.userId = user.id;
+      } else {
+        console.error('No user data found in Capacitor Preferences.');
+      }
+    } catch (error) {
+      console.error('Error retrieving user data:', error);
+    }
+  }
+  
   async closeModal(){
     this.modalController.dismiss(()=>{
       this.router.navigate(['/payment-methods']);
@@ -28,31 +54,49 @@ export class AddCardComponent  implements OnInit {
   }
 
   async addCard() {
-
-    //close the modal
-    this.closeModal();
-
-    // Show loading spinner
-    const loading = await this.loadingController.create({
-      message: 'Adding a Card...',
-      duration: 3000, // Spinner will disappear after 3 seconds
-    });
-    await loading.present();
-
-    // Simulate card addition logic
-    setTimeout(async () => {
-      // Dismiss loading spinner
-      await loading.dismiss();
-
-      // Show toast message
-      const toast = await this.toastController.create({
-        message: 'A card was successfully added.',
-        duration: 2000, // Toast will disappear after 2 seconds
-        position: 'top', // Display at the top
-        color: 'success', // Optional: Customize color
+      const loading = await this.loadingController.create({
+        message: 'Loading...',
       });
-      await toast.present();
-    }, 3000); // Simulate the delay of card processing (matches loading duration)
+      await loading.present();
+    
+      if (this.card.id) {
+        this.cardService.updateCard(this.card.id, this.card).subscribe(
+          async (updatedCard) => {
+            await loading.dismiss();
+            this.showToast('Card updated successfully', 'success');
+            this.modalController.dismiss(updatedCard);
+          },
+          async (error) => {
+            await loading.dismiss();
+            this.showToast('Error updating card', 'danger');
+            console.error('Error updating card:', error);
+          }
+        );
+      } else {
+        this.cardService.addCard(this.card).subscribe(
+          async (newCard) => {
+            await loading.dismiss();
+            this.showToast('New card added successfully', 'success');
+            this.modalController.dismiss(newCard);
+          },
+          async (error) => {
+            await loading.dismiss();
+            this.showToast('Error adding new card', 'danger');
+            console.error('Error adding new card:', error);
+          }
+        );
+     }
+  }
+  
+
+  async showToast(message: string, color: 'success' | 'danger') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'top',
+      color: color,
+    });
+    toast.present();
   }
 
 }

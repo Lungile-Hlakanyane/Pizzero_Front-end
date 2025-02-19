@@ -29,6 +29,10 @@ export class SignUpComponent  implements OnInit {
 
   ngOnInit() {}
 
+  togglePasswordVisibility() {
+    this.password = this.password === 'password' ? 'text' : 'password';
+  }
+
   signUp() {
     // Step 1: Show the loading spinner with 'Loading...' text
     this.loadingController.create({

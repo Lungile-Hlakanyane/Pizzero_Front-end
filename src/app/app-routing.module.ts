@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'otp', component: OtpComponent },
   { path: 'order-review', component: OrderReviewComponent },
   { path: 'track-order', component: TrackOrderComponent },
-  { path: 'view-order-details', component: ViewOrderDetailsComponent },
+  { path: 'view-order-details/:cartId', component: ViewOrderDetailsComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'view-customer', component: ViewCustomerComponent },
   { path: 'password-reset-otp', component: PasswordResetOtpComponent },

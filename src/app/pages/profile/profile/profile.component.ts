@@ -100,7 +100,6 @@ export class ProfileComponent  implements OnInit {
     await toast.present();
   }
 
-   // Get user ID from local storage
    async getUserId() {
     const storedUser = await Preferences.get({ key: 'user' });
     if (storedUser.value) {

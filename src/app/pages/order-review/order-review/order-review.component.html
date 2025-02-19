@@ -30,43 +30,64 @@
 
     <!-- Sections -->
     <div *ngIf="activeSection === 'delivery'">
-      <!-- Delivery Section -->
-      <p style="font-weight: bold; font-size: 15px; color: #000;">Deliver to:</p>
+    
+      <p style="font-weight: bold; font-size: 15px; color: #000;">Deliver to:</p>  
+
       <div class="address-card">
-        <ion-select label="Address" label-placement="floating" style="position: relative; bottom: 19px;">
-          <ion-select-option value="address-1">27751 Namibia Rockland Bloemfontein Free State 9323</ion-select-option>
+        <ion-select
+          label="Address"
+          label-placement="floating"
+          style="position: relative; bottom: 19px;"
+          [(ngModel)]="userData.physicalAddress"
+          (ionChange)="onAddressChange($event)">
+          <ion-select-option *ngIf="userData?.physicalAddress" [value]="userData.physicalAddress">
+            {{ userData.physicalAddress }}
+          </ion-select-option>
+          <ion-select-option value="add-new">Add new address</ion-select-option>
         </ion-select>
       </div>
+      
+            
       <p style="color: orange; font-weight: 100; font-size: 13px; position: relative; bottom: 5px;">Delivery in 15 - 20 min</p>
 
       <div class="phone-number-input">
         <p style="color: grey; font-size: 17px; font-weight: bold;">Phone Number</p>
         <div style="display: flex; justify-content: space-between; position: relative; bottom: 35px;">
-          <ion-input labelPlacement="stacked" placeholder="Enter phone number"></ion-input>
+          <ion-input labelPlacement="stacked" placeholder="Enter phone number" [(ngModel)]="userData.phoneNumber"></ion-input>
           <ion-icon name="pencil"></ion-icon>
         </div>
       </div>
-
+      
       <div class="payment-method" style="position: relative; bottom: 45px;">
         <p style="color: grey; font-size: 17px; font-weight: bold;">Payment Method</p>
         <div style="position: relative; bottom: 30px;">
-          <ion-select label="Select Payment Method" label-placement="floating">
-            <ion-select-option value="method-1">Visa Card</ion-select-option>
-            <ion-select-option value="method-2">Master Card</ion-select-option>
-            <ion-select-option value="method-3">Payment on Delivery</ion-select-option>
+          <ion-select label="Select Payment Method" label-placement="floating" (ionChange)="onPaymentMethodChange($event)">
+            <ion-select-option *ngFor="let card of userCards" [value]="card.id">
+              {{ card.cardHolderName }} - ****{{ card.cardNumber.slice(-4)}}
+            </ion-select-option>
+            <ion-select-option value="add-new">Add new card</ion-select-option>
+            <ion-select-option value="payment-delivery">Cash on Delivery</ion-select-option>
           </ion-select>
         </div>
       </div>
-
+      
       <div class="order-summary" style="position: relative; bottom: 75px;">
         <div style="display: flex; justify-content: space-between;">
-          <p style="font-weight: bold; font-size: 15px; color: grey;">1 Custom Pizza (Small, 400g)</p>
-          <p style="color: grey; font-size: 15px; font-weight: bold;">R120.00</p>
+          <p style="font-weight: bold; font-size: 15px; color: grey;">
+            1 {{ orderData?.name }} ({{ orderData?.size }})
+          </p>
+          <p style="color: grey; font-size: 15px; font-weight: bold;">
+            R{{ orderData?.price }}.00
+          </p>
         </div>
-        <p style="color: #000; font-size: 15px; font-weight: bold; position: relative; bottom: 20px;">Ingredients:</p>
-        <p style="color: grey; font-size: 12px; font-weight: 100;">Stuffed crust, pesto, cheese, garlic, mozzarella, onions</p>
+        <p style="color: #000; font-size: 15px; font-weight: bold; position: relative; bottom: 20px;">
+          Ingredients:
+        </p>
+        <p style="color: grey; font-size: 18px; font-weight: 100;">
+          {{ orderData?.ingredients }}
+        </p>
       </div>
-
+      
       <div class="action-btn-container" style="display: flex; justify-content: space-between; position: relative; bottom: 75px;">
         <ion-button expand="block" class="custom-btn">
           <ion-icon name="pencil"></ion-icon>Edit Order
@@ -77,12 +98,17 @@
       </div>
 
       <div class="total-container" style="display: flex; justify-content: space-between;">
-        <p style="color: grey; font-weight: bold; font-size: 15px;">SUBTOTAL:</p>
-        <p style="color: grey; font-weight: bold; font-size: 15px;">R120.00</p>
+        <p style="color: grey; font-weight: bold; font-size: 15px;">Discounts:</p>
+        <p style="color: grey; font-weight: bold; font-size: 15px;">R{{discounts}}.00</p>
+      </div>
+
+      <div class="total-container" style="display: flex; justify-content: space-between;">
+        <p style="color: #000; font-weight: bold; font-size: 18px;">SUBTOTAL:</p>
+        <p style="color: #000; font-weight: bold; font-size: 18px;">R{{totalPrice}}.00</p>
       </div>
 
       <div class="action-btn-container">
-        <ion-button expand="block" class="custom-btn" (click)="justPlaceOrder()">
+        <ion-button expand="block" class="custom-btn" (click)="createOrder()">
           <ion-icon name="checkmark-circle"></ion-icon>Place Order
         </ion-button>
       </div>
@@ -154,7 +180,7 @@
         </div>
       
         <div class="action-btn-container">
-          <ion-button expand="block" class="custom-btn" (click)="placeOrder()">
+          <ion-button expand="block" class="custom-btn" (click)="createOrder()">
             <ion-icon name="checkmark-circle"></ion-icon>Place Order
           </ion-button>
         </div>
